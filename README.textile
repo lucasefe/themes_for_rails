@@ -20,3 +20,8 @@ h2. Ideas
 * Add ThemeSupport::Railtie for configuration, so we selectively set the plugin on or off. Also to be able to change several settings. 
 * Add routes to allow access to the theme's static resources (js and cs), unless cached on public folder by capistrano / rake. 
 * Extend Action View path in order to make the views accessible. Same for the layouts. 
+
+h2. Things to remember.
+
+* Final version should be a gem. Initialization hooks doesn't work when using this as a plugin (vendor/plugins).
+* Research about testing this kind of gem. I really don't have a clue.   
