@@ -1,0 +1,23 @@
+h1. Theme Support for Rails 3
+
+h2. Features list / Wish list
+
+* Support for adding themes which includes stylesheets, javascripts, views and layouts. 
+
+<pre>
+APP/
+  themes/
+    default/
+      javascripts
+      layouts
+      stylesheets
+      views  
+</pre>
+
+
+h2. Ideas
+
+* Add routes to allow access to the theme's static resources (js and cs).
+* Extend Action View path in order to make the views accessible. Same for the layouts. 
+* Extend 
+* Expose one controller.
