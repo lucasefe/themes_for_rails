@@ -17,7 +17,6 @@ APP/
 
 h2. Ideas
 
-* Add routes to allow access to the theme's static resources (js and cs).
+* Add ThemeSupport::Railtie for configuration, so we selectively set the plugin on or off. Also to be able to change several settings. 
+* Add routes to allow access to the theme's static resources (js and cs), unless cached on public folder by capistrano / rake. 
 * Extend Action View path in order to make the views accessible. Same for the layouts. 
-* Extend 
-* Expose one controller.
