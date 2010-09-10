@@ -18,7 +18,12 @@ module ThemeSupport
           @controller.theme :default  
           assert_equal antes + 1, @controller.view_paths.size
         end
-        
+        should "have a proper view path" do
+          @controller.theme :default
+          view_path = @controller.view_paths.last
+          theme_path = File.join(File.expand_path(File.dirname(__FILE__)), "dummy_app", "themes", "default", "views")
+          assert_equal view_path.to_s, theme_path
+        end
       end
     end
   end
