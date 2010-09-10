@@ -8,7 +8,7 @@ module ThemeSupport
         :action => 'stylesheets',
         :theme => 'default', 
         :asset => 'app',
-        :format => 'css'
+        :extension => 'css'
       })
     end
     should "recognize javascripts route" do
@@ -17,7 +17,7 @@ module ThemeSupport
         :action => 'javascripts',
         :theme => 'default', 
         :asset => 'app',
-        :format => 'js'
+        :extension => 'js'
       })
     end
     should "recognize images route" do
@@ -26,7 +26,7 @@ module ThemeSupport
         :action => 'images',
         :theme => 'default', 
         :asset => 'logo',
-        :format => 'png'
+        :extension => 'png'
       })
     end
   end
