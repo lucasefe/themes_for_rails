@@ -14,6 +14,10 @@ APP/
       views  
 </pre>
 
+h2. Instructions
+
+* Add theme_support to your Gemfile.
+* Add theme_support to your config/routes.rb
 
 h2. Ideas
 
