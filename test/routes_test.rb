@@ -1,12 +1,8 @@
 require "test_helper"
 
-# assert_generates
-# assert_recognizes
-# assert_routing
-
 module ThemeSupport
   class RoutingTest < ActionController::TestCase  
-    test "recognize stylesheets route" do
+    should "recognize stylesheets route" do
       assert_generates('/themes/default/stylesheets/app.css', { 
         :controller => 'theme_support/assets', 
         :action => 'stylesheets',
@@ -15,7 +11,7 @@ module ThemeSupport
         :format => 'css'
       })
     end
-    test "recognize javascripts route" do
+    should "recognize javascripts route" do
       assert_generates('/themes/default/javascripts/app.js', { 
         :controller => 'theme_support/assets', 
         :action => 'javascripts',
@@ -24,7 +20,7 @@ module ThemeSupport
         :format => 'js'
       })
     end
-    test "recognize images route" do
+    should "recognize images route" do
       assert_generates('/themes/default/images/logo.png', { 
         :controller => 'theme_support/assets', 
         :action => 'images',
@@ -34,5 +30,4 @@ module ThemeSupport
       })
     end
   end
-  
 end

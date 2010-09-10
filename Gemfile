@@ -6,4 +6,6 @@ gem 'test-unit', :require => 'test/unit'
 gem "rspec-rails", ">= 2.0.0.beta.20"
 gem 'theme_support', :path => '.'
 gem 'jeweler'
+gem "contest"
+
 

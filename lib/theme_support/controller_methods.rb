@@ -1,10 +1,12 @@
 module ThemeSupport
   module ControllerMethods
     extend ActiveSupport::Concern
-    included do
-      
-    end
     module ClassMethods
+      def theme(theme_name)
+        puts "setting theme #{theme_name}!"
+      end
+    end
+    module InstanceMethods
       def theme(theme_name)
         puts "setting theme #{theme_name}!"
       end
