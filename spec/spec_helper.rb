@@ -1,17 +1,26 @@
 ENV["RAILS_ENV"] = "test"
-$:.unshift File.dirname(__FILE__)
-
 require "dummy_app/config/environment"
-require 'rspec'
-require 'rspec/autorun'
+require 'rails/all'
+$:.unshift File.expand_path('../support', __FILE__)
 require "#{File.dirname(__FILE__)}/../lib/theme_support.rb"
 
-$:.unshift File.expand_path('../support', __FILE__)
+require 'action_dispatch/testing/assertions/routing'
+require 'action_dispatch/testing/integration'
+require 'action_dispatch/routing'
+require 'active_support'
+require 'active_record'
+require 'action_controller'
+require 'action_view'
+
+require 'rspec/rails'
+require 'rspec/rails/adapters'
+
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
-# require 'active_support'
-# require 'active_record'
-# require 'action_controller'
-# require 'action_view'
-# require 'rails3_plugin_toolbox'
+RSpec.configure do |config|
+  config.mock_with :rspec
+  config.include ActionDispatch::Assertions::RoutingAssertions
+  config.include RSpec::Rails::Matchers::RoutingMatchers
+  
+end
 
