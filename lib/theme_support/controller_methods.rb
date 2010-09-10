@@ -3,7 +3,8 @@ module ThemeSupport
     extend ActiveSupport::Concern
     included do
       attr_accessor :theme_name
-      include ThemeSupport::HelperMethods
+      include ThemeSupport::CommonMethods
+      include ThemeSupport::UrlHelpers
     end
     module InstanceMethods
       def theme(theme_name)

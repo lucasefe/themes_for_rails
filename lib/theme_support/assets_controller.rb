@@ -2,7 +2,8 @@ require "action_controller/metal"
 
 module ThemeSupport
   class AssetsController < ActionController::Base
-    include ThemeSupport::HelperMethods
+    include ThemeSupport::CommonMethods
+    include ThemeSupport::UrlHelpers
     def stylesheets
       render_asset theme_stylesheet_path(params[:theme], params[:asset])
     end

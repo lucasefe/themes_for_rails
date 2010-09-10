@@ -26,5 +26,20 @@ module ThemeSupport
         end
       end
     end
+    context "using url helpers" do
+      tests ApplicationController
+      should "provide url method to access a given stylesheet file in the current theme" do
+        @controller.theme :default
+        assert_equal @controller.send(:current_theme_stylesheet_path, "style"), "/themes/default/stylesheets/style.css"
+      end
+      should "provide url method to access a given javascript file in the current theme" do
+        @controller.theme :default
+        assert_equal @controller.send(:current_theme_javascript_path, "app"), "/themes/default/javascripts/app.js"
+      end
+      should "provide url method to access a given image file in the current theme" do
+        @controller.theme :default
+        assert_equal @controller.send(:current_theme_image_path, "logo.png"), "/themes/default/images/logo.png"
+      end
+    end
   end
 end

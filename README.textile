@@ -19,6 +19,15 @@ h2. Instructions
 * Add theme_support to your Gemfile.
 * Add theme_support to your config/routes.rb
 
+
+h3. Url Helpers
+
+In your views you should be able to access your assets like this (given the theme 'default' is set):
+
+* current_theme_image_path('logo.png') # => /themes/default/images/logo.png
+* current_theme_stylesheet_path('style') # => /themes/default/stylesheets/logo.css
+* current_theme_javascript_path('app') # => /themes/default/stylesheets/app.js
+
 h2. Ideas
 
 * Add ThemeSupport::Railtie for configuration, so we selectively set the plugin on or off. Also to be able to change several settings. 
