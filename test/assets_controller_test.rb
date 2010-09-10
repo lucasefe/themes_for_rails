@@ -11,6 +11,10 @@ module ThemeSupport
       assert_response :success
       assert_template "themes/default/stylesheets/style.css"
     end
+    should "not be success when the stylesheet file is not found" do
+      get 'stylesheets', { :theme => 'default', :asset => 'oldstyle', :extension => 'css'}
+      assert_response :missing
+    end
     # javascripts
     should "respond to javascripts" do
       assert @controller.respond_to?(:javascripts)
@@ -20,6 +24,11 @@ module ThemeSupport
       assert_response :success
       assert_template "themes/default/javascripts/app.js"
     end
+    should "not be success when the javascript file is not found" do
+      get 'javascripts', { :theme => 'default', :asset => 'oldapp', :extension => 'js'}
+      assert_response :missing
+    end
+    
     # images
     should "respond to images" do
       assert @controller.respond_to?(:images)
@@ -28,6 +37,10 @@ module ThemeSupport
       get 'images', { :theme => 'default', :asset => 'logo', :extension => 'png'}
       assert_response :success
       assert_template "themes/default/images/logo.png"
+    end
+    should "not be success when the image file is not found" do
+      get 'images', { :theme => 'default', :asset => 'logo', :extension => 'jpg'}
+      assert_response :missing
     end
   end
 end
