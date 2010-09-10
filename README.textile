@@ -19,6 +19,42 @@ h2. Instructions
 * Add theme_support to your Gemfile.
 * Add theme_support to your config/routes.rb
 
+Now you are able to use themes this way:
+
+At instance level: 
+
+<pre>
+class MyController < ApplicationController
+  def show
+    theme :purple
+  end
+end
+</pre>
+
+Or at class level
+
+<pre>
+class MyController < ApplicationController
+  theme :purple # all actions will use this theme
+  def show
+    ...
+  end
+end
+</pre>
+
+You could also enable a theme for some actions only
+
+<pre>
+class MyController < ApplicationController
+  theme :purple, :only => :show
+  def show
+    # with theme
+  end
+  def edit
+    # no theme
+  end
+end
+</pre>
 
 h3. Url Helpers
 
