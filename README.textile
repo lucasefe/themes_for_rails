@@ -82,5 +82,5 @@ h2. Running tests
 <pre>
 gem install bundler
 bundle install
-rspec spec  
+rake
 </pre>
