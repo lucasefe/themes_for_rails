@@ -6,13 +6,17 @@ module ThemeSupport
       include ThemeSupport::CommonMethods
       include ThemeSupport::UrlHelpers
     end
-    module InstanceMethods
-      def theme(theme_name)
-        @theme_name = theme_name
-        set_theme(theme_name)
+    module ClassMethods
+      def theme(name, options = {})
+        before_filter(options) do |controller|
+          controller.set_theme(name)
+        end
       end
-    private
-
+    end
+    module InstanceMethods
+      def theme(name)
+        set_theme(name)
+      end
     end
   end
 end

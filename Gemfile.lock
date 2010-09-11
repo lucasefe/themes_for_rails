@@ -53,6 +53,8 @@ GEM
       mime-types
       treetop (>= 1.4.5)
     mime-types (1.16)
+    mocha (0.9.8)
+      rake
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -98,6 +100,7 @@ PLATFORMS
 DEPENDENCIES
   contest
   jeweler
+  mocha
   rails (= 3.0.0)
   rspec-rails (>= 2.0.0.beta.20)
   sqlite3-ruby

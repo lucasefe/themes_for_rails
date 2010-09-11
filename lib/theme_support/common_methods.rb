@@ -3,8 +3,9 @@ module ThemeSupport
     def view_path_for(theme)
       File.join(theme_path_for(theme), "views")
     end
-    def set_theme(theme_name)
-      add_theme_view_path_for(theme_name)
+    def set_theme(name)
+      self.theme_name = name
+      add_theme_view_path_for(name)
     end
     def add_theme_view_path_for(theme_name)
       self.view_paths << ActionView::FileSystemResolver.new(view_path_for(theme_name))

@@ -1,8 +1,25 @@
 require "test_helper"
 
+class ApplicationController < ActionController::Base
+  def hello
+    render :text => "Just a test"
+  end
+end
 module ThemeSupport
   class ControllerMethodsTest < ActionController::TestCase  
-    context "as an instance" do
+    context "at class level" do
+      tests ApplicationController
+      should "respond_to theme" do
+        assert ApplicationController.respond_to?(:theme)
+      end
+      should "set the selected theme for all actions" do
+        ApplicationController.theme :default
+        @controller.expects(:set_theme).with(:default)
+        assert_equal nil, @controller.theme_name
+        get :hello
+      end
+    end
+    context "at instance level" do
       tests ApplicationController
       should "respond_to theme" do
         assert @controller.respond_to?(:theme)
