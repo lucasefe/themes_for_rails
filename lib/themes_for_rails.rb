@@ -1,3 +1,12 @@
+module ThemesForRails
+  def self.theme_base_dir
+    Rails.root
+  end
+  def self.available_themes
+    Dir.glob("#{theme_base_dir}/themes/*")
+  end
+end
+
 require 'active_support/dependencies'
 require 'themes_for_rails/common_methods'
 require 'themes_for_rails/url_helpers'
