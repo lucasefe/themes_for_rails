@@ -2,7 +2,6 @@ module ThemesForRails
   module ControllerMethods
     extend ActiveSupport::Concern
     included do
-      attr_accessor :theme_name
       include ThemesForRails::CommonMethods
       include ThemesForRails::UrlHelpers
     end
