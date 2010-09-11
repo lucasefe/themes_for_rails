@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = %q{themes_for_rails}
-  s.version = "0.1.0"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Lucas Florio"]
   s.date = %q{2010-09-11}
-  s.description = %q{A different and possibly longer explanation of}
+  s.description = %q{It allows an application to have many different ways of rendering static assets and dynamic views. }
   s.email = %q{lucasefe@gmail.com}
   s.extra_rdoc_files = [
     "README.textile"
@@ -23,7 +23,13 @@ Gem::Specification.new do |s|
      "README.textile",
      "Rakefile",
      "init.rb",
-     "lib/tasks/theme_support.rake",
+     "lib/generators/theme_for_rails/install_generator.rb",
+     "lib/generators/theme_for_rails/templates/theme/images/.gitkeep",
+     "lib/generators/theme_for_rails/templates/theme/javascripts/.gitkeep",
+     "lib/generators/theme_for_rails/templates/theme/stylesheets/.gitkeep",
+     "lib/generators/theme_for_rails/templates/theme/views/layouts/.gitkeep",
+     "lib/generators/theme_for_rails/theme_generator.rb",
+     "lib/tasks/themes_for_rails.rake",
      "lib/themes_for_rails.rb",
      "lib/themes_for_rails/assets_controller.rb",
      "lib/themes_for_rails/common_methods.rb",
@@ -32,6 +38,7 @@ Gem::Specification.new do |s|
      "lib/themes_for_rails/routes.rb",
      "lib/themes_for_rails/url_helpers.rb",
      "lib/themes_for_rails/version.rb",
+     "lib/themes_for_rails/view_helpers.rb",
      "test/assets_controller_test.rb",
      "test/controller_methods_test.rb",
      "test/dummy_app/.gitignore",
@@ -75,6 +82,7 @@ Gem::Specification.new do |s|
      "test/dummy_app/themes/default/images/logo.png",
      "test/dummy_app/themes/default/javascripts/app.js",
      "test/dummy_app/themes/default/stylesheets/style.css",
+     "test/dummy_app/themes/default/stylesheets/style2.css",
      "test/dummy_app/themes/default/views/layouts/default.html.erb",
      "test/dummy_app/themes/default/views/products/index.html.erb",
      "test/routes_test.rb",
@@ -86,7 +94,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
-  s.summary = %q{One line summary of your gem}
+  s.summary = %q{Themes support for rails (3)}
   s.test_files = [
     "test/assets_controller_test.rb",
      "test/controller_methods_test.rb",
