@@ -20,8 +20,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gemspec|
     gemspec.name = "themes_for_rails"
-    gemspec.summary = "One line summary of your gem"
-    gemspec.description = "A different and possibly longer explanation of"
+    gemspec.summary = "Themes support for rails (3)"
+    gemspec.description = "It allows an application to have many different ways of rendering static assets and dynamic views. "
     gemspec.email = "lucasefe@gmail.com"
     gemspec.homepage = "http://github.com/lucasefe/themes_for_rails"
     gemspec.authors = ["Lucas Florio"]
