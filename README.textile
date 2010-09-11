@@ -1,4 +1,4 @@
-h1. Theme Support for Rails 3
+h1. Theme For Rails (3 and hopefully above)
 
 h2. Features list / Wish list
 
@@ -14,8 +14,6 @@ $app_root
       javascripts/
       views/           <- you can override application views
         layouts/         <- layout .rhtml or .liquid templates
-      about.markdown
-      preview.png 
 </pre>
 
 h2. Instructions
@@ -23,9 +21,9 @@ h2. Instructions
 * Add themes_for_rails to your Gemfile.
 * Add themes_for_rails to your config/routes.rb
 
-Now you are able to use themes this way:
+Now you'll be able to use themes like this:
 
-At instance level: 
+Inside method, for some exlicit action:
 
 <pre>
 class MyController < ApplicationController
@@ -35,7 +33,7 @@ class MyController < ApplicationController
 end
 </pre>
 
-Or at class level
+Or at class level definition, in order to set a theme for more than one action. I think this is is prettier, and less invasive. 
 
 <pre>
 class MyController < ApplicationController
@@ -76,8 +74,8 @@ h2. Ideas
 
 h2. Things to remember.
 
-* Final version should be a gem. Initialization hooks doesn't work when using this as a plugin (vendor/plugins).
-* Research about testing this kind of gem. I really don't have a clue.
+* -Final version should be a gem. Initialization hooks doesn't work when using this as a plugin (vendor/plugins).-
+* -Research about testing this kind of gem. I really don't have a clue.- Testing in place!
 * I should probably load the theme list at start time, to be able to consult it as needed. I am gonna need that when dealing with runtime  theme selection. Many themes are going to be used simultaneously, so I have to be able to swith view paths as fast as I can. 
 
 
@@ -88,3 +86,7 @@ gem install bundler
 bundle install
 rake
 </pre>
+
+h2. Authors and contributors
+
+* lucasefe
