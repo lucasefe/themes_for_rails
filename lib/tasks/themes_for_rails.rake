@@ -9,7 +9,6 @@ namespace :themes do
       FileUtils.cp_r "#{theme}/images", "#{Rails.public_path}/themes/#{theme_name}/images", :verbose => true
       FileUtils.cp_r "#{theme}/stylesheets", "#{Rails.public_path}/themes/#{theme_name}/stylesheets", :verbose => true
       FileUtils.cp_r "#{theme}/javascripts", "#{Rails.public_path}/themes/#{theme_name}/javascripts", :verbose => true
-      FileUtils.cp_r "#{theme}/views", "#{Rails.public_path}/themes/#{theme_name}/views", :verbose => true
     end
   end
   desc "Removes the cached (public) theme folders"
