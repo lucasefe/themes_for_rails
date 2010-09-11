@@ -9,7 +9,7 @@ module ThemesForRails
     should "respond with the right stylesheet file when requested" do
       get 'stylesheets', { :theme => 'default', :asset => 'style', :extension => 'css'}
       assert_response :success
-      assert_template "themes/default/stylesheets/style.css"
+      assert_equal @response.content_type, 'text/css'
     end
     should "not be success when the stylesheet file is not found" do
       get 'stylesheets', { :theme => 'default', :asset => 'oldstyle', :extension => 'css'}
@@ -22,7 +22,7 @@ module ThemesForRails
     should "respond with the right javascript file when requested" do
       get 'javascripts', { :theme => 'default', :asset => 'app', :extension => 'js'}
       assert_response :success
-      assert_template "themes/default/javascripts/app.js"
+      assert_equal @response.content_type, 'text/javascript'
     end
     should "not be success when the javascript file is not found" do
       get 'javascripts', { :theme => 'default', :asset => 'oldapp', :extension => 'js'}
@@ -36,10 +36,10 @@ module ThemesForRails
     should "respond with the right image file when requested" do
       get 'images', { :theme => 'default', :asset => 'logo', :extension => 'png'}
       assert_response :success
-      assert_template "themes/default/images/logo.png"
+      assert_equal @response.content_type, 'image/png'
     end
     should "not be success when the image file is not found" do
-      get 'images', { :theme => 'default', :asset => 'logo', :extension => 'jpg'}
+      get 'images', { :theme => 'default', :asset => 'i_am_not_here', :extension => 'jpg'}
       assert_response :missing
     end
   end

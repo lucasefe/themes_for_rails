@@ -20,6 +20,7 @@ module ThemesForRails
       self.theme_name = name    
       add_theme_view_path unless self.theme_name.nil?
     end
+  public
     # will add the view path for the current theme
     def add_theme_view_path
       add_theme_view_path_for(self.theme_name)
@@ -28,22 +29,14 @@ module ThemesForRails
     def add_theme_view_path_for(name)
       self.view_paths << ActionView::FileSystemResolver.new(view_path_for(name))
     end
-    
+    def public_theme_path
+      theme_path("/")
+    end
+    def theme_path(base = ::Rails.root)
+      theme_path_for(theme_name, base)
+    end
     def theme_path_for(name, base = ::Rails.root)
-      File.join(base, "themes", name.to_s)
+      File.join(base, "themes", name)
     end
-    
-    def theme_stylesheet_path(name, asset)
-      File.join(theme_path_for(name), 'stylesheets', "#{asset}.css")
-    end
-    def theme_javascript_path(name, asset)
-      File.join(theme_path_for(name), 'javascripts', "#{asset}.js")
-    end
-    def theme_image_path(name, asset, extension = nil)
-      extension ||= "png"
-      extension = ".#{extension}"
-      File.join(theme_path_for(name), 'images', "#{asset}#{extension}")
-    end
-    
   end
 end

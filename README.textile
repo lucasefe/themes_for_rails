@@ -70,7 +70,7 @@ private
 end
 </pre>
 
-As a general rule, when indicating a String, that becomes the theme name, but when a Symbol is sent, it gets treated as method message. 
+As a general rule, when passing a String, that becomes the theme name, but when a Symbol is sent, it gets treated as method message. 
 
 h3. Url Helpers
 
@@ -79,6 +79,17 @@ In your views you should be able to access your assets like this (given the them
 * current_theme_image_path('logo.png') # => /themes/default/images/logo.png
 * current_theme_stylesheet_path('style') # => /themes/default/stylesheets/logo.css
 * current_theme_javascript_path('app') # => /themes/default/stylesheets/app.js
+
+In your application views, there are theme specific helper tags 
+available to you. For ERb templates they are:
+
+* theme_image_tag
+* theme_image_path
+* theme_javascript_include_tag
+* theme_javascript_path
+* theme_stylesheet_link_tag
+* theme_stylesheet_path
+
 
 h2. Ideas
 

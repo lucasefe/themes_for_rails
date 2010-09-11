@@ -3,7 +3,9 @@ module ThemesForRails
     extend ActiveSupport::Concern
     included do
       include ThemesForRails::CommonMethods
-      helper_method :current_theme_stylesheet_path, :current_theme_javascript_path, :current_theme_image_path
+      helper_method :current_theme_stylesheet_path, 
+        :current_theme_javascript_path, 
+        :current_theme_image_path
     end
     module InstanceMethods
       def current_theme_stylesheet_path(asset)
