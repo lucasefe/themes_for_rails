@@ -27,7 +27,7 @@ Inside method, for some exlicit action:
 <pre>
 class MyController < ApplicationController
   def show
-    theme :purple
+    theme "purple"
   end
 end
 </pre>
@@ -36,7 +36,7 @@ Or at class level definition, in order to set a theme for more than one action. 
 
 <pre>
 class MyController < ApplicationController
-  theme :purple # all actions will use this theme
+  theme "purple" # all actions will use this theme
   def show
     ...
   end
@@ -47,12 +47,25 @@ You could also enable a theme for some actions only
 
 <pre>
 class MyController < ApplicationController
-  theme :purple, :only => :show
+  theme "purple", :only => :show
   def show
     # with theme
   end
   def edit
     # no theme
+  end
+end
+</pre>
+
+As a plus, you could do this: 
+
+<pre>
+class MyController < ApplicationController
+  theme :theme_resolver
+  # ...
+private
+  def theme_resolver
+    current_user.theme # or anything else that return a string. 
   end
 end
 </pre>
