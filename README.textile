@@ -1,4 +1,4 @@
-h1. Theme For Rails (3 and hopefully above)
+h1. Theme For Rails (3 and hopefully later)
 
 h2. Features list / Wish list
 
