@@ -5,19 +5,23 @@ h2. Features list / Wish list
 * Support for adding themes which includes stylesheets, javascripts, views and layouts. 
 
 <pre>
-APP/
+$app_root
   themes/
-    default/
-      javascripts
-      layouts
-      stylesheets
-      views  
+    [theme_name]
+      
+      images/
+      stylesheets/
+      javascripts/
+      views/           <- you can override application views
+        layouts/         <- layout .rhtml or .liquid templates
+      about.markdown
+      preview.png 
 </pre>
 
 h2. Instructions
 
-* Add theme_support to your Gemfile.
-* Add theme_support to your config/routes.rb
+* Add themes_for_rails to your Gemfile.
+* Add themes_for_rails to your config/routes.rb
 
 Now you are able to use themes this way:
 
@@ -66,7 +70,7 @@ In your views you should be able to access your assets like this (given the them
 
 h2. Ideas
 
-* Add ThemeSupport::Railtie for configuration, so we selectively set the plugin on or off. Also to be able to change several settings. 
+* Add ThemesForRails::Railtie for configuration, so we selectively set the plugin on or off. Also to be able to change several settings. 
 * Add routes to allow access to the theme's static resources (js and cs), unless cached on public folder by capistrano / rake. 
 * Extend Action View path in order to make the views accessible. Same for the layouts. 
 

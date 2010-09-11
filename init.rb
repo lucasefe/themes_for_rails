@@ -1,1 +1,1 @@
-require "theme_support"
+require "themes_for_rails"

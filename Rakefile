@@ -1,5 +1,5 @@
-# require File.join(File.dirname(__FILE__), 'lib', 'theme_support')
-require File.dirname(__FILE__) + "/lib/theme_support/version.rb"
+# require File.join(File.dirname(__FILE__), 'lib', 'themes_for_rails')
+require File.dirname(__FILE__) + "/lib/themes_for_rails/version.rb"
 
 require 'rake'
 require 'rake/testtask'
@@ -19,13 +19,13 @@ end
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gemspec|
-    gemspec.name = "theme_support"
+    gemspec.name = "themes_for_rails"
     gemspec.summary = "One line summary of your gem"
     gemspec.description = "A different and possibly longer explanation of"
     gemspec.email = "lucasefe@gmail.com"
-    gemspec.homepage = "http://github.com/lucasefe/theme_support"
+    gemspec.homepage = "http://github.com/lucasefe/themes_for_rails"
     gemspec.authors = ["Lucas Florio"]
-    gemspec.version = ThemeSupport::VERSION
+    gemspec.version = ThemesForRails::VERSION
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: gem install jeweler"

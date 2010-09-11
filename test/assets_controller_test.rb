@@ -1,8 +1,8 @@
 require "test_helper"
 
-module ThemeSupport
+module ThemesForRails
   class AssetsControllerTest < ActionController::TestCase  
-    tests ThemeSupport::AssetsController
+    tests ThemesForRails::AssetsController
     should "respond to stylesheets" do
       assert @controller.respond_to?(:stylesheets)
     end

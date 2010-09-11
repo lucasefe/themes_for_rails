@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     render :text => "Just a test"
   end
 end
-module ThemeSupport
+module ThemesForRails
   class ControllerMethodsTest < ActionController::TestCase  
     context "at class level" do
       tests ApplicationController
