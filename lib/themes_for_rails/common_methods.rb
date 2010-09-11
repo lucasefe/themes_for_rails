@@ -19,9 +19,14 @@ module ThemesForRails
     end
     def set_theme(name)
       self.theme_name = name    
-      add_theme_view_path unless self.theme_name.nil?
+      if valid_theme?
+        add_theme_view_path 
+      end    
     end
   public
+    def valid_theme?
+      !self.theme_name.nil?
+    end
     # will add the view path for the current theme
     def add_theme_view_path
       add_theme_view_path_for(self.theme_name)
