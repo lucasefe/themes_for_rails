@@ -57,7 +57,7 @@ class MyController < ApplicationController
 end
 </pre>
 
-As a plus, you could do this: 
+As a plus, you could do this to defer theme name resolution to a method: 
 
 <pre>
 class MyController < ApplicationController
@@ -69,6 +69,8 @@ private
   end
 end
 </pre>
+
+As a general rule, when indicating a String, that becomes the theme name, but when a Symbol is sent, it gets treated as method message. 
 
 h3. Url Helpers
 
