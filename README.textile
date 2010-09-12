@@ -17,12 +17,27 @@ $app_root
 
 h2. Instructions
 
-* Add themes_for_rails to your Gemfile.
-* Add themes_for_rails to your config/routes.rb
+Add themes_for_rails to your Gemfile.
+
+<pre>
+gem 'themes_for_rails'
+</pre>
+
+Add themes_for_rails to your config/routes.rb
+
+<pre>
+MySuperDuperApp::Application.routes.draw do
+  # ...
+  themes_for_rails
+  # ...
+end
+</pre>
+
+h3. And then?
 
 Now you'll be able to use themes like this:
 
-Inside method, for some exlicit action:
+Inside method, for some explicit action:
 
 <pre>
 class MyController < ApplicationController
@@ -76,42 +91,56 @@ h3. Url Helpers
 
 In your views you should be able to access your assets like this (given the theme 'default' is set):
 
-* current_theme_image_path('logo.png') # => /themes/default/images/logo.png
-* current_theme_stylesheet_path('style') # => /themes/default/stylesheets/logo.css
-* current_theme_javascript_path('app') # => /themes/default/stylesheets/app.js
+<pre>
+current_theme_image_path('logo.png')   # => /themes/default/images/logo.png
+current_theme_stylesheet_path('style') # => /themes/default/stylesheets/logo.css
+current_theme_javascript_path('app')   # => /themes/default/stylesheets/app.js
+</pre>
+
+Or a given theme:
+
+<pre>
+current_theme_image_path('logo.png', 'purple')   # => /themes/purple/images/logo.png
+</pre>
 
 In your application views, there are theme specific helper tags 
 available to you. For ERb templates they are:
 
-* theme_image_tag
-* theme_image_path
-* theme_javascript_include_tag
-* theme_javascript_path
-* theme_stylesheet_link_tag
-* theme_stylesheet_path
+<pre>
+theme_image_tag
+theme_image_path
+theme_javascript_include_tag
+theme_javascript_path
+theme_stylesheet_link_tag
+theme_stylesheet_path  
+</pre>
 
 h2. Generators
 
 For now, it only creates the theme folder.
 
-rails generate theme_for_rails:install
+<pre>
+rails generate theme_for_rails:install  
+</pre>
 
 Inside the themes folder, it create a structure for my_theme.
 
-rails generate theme_for_rails:theme my_theme
+<pre>
+rails generate theme_for_rails:theme my_theme  
+</pre>
 
 h2. Ideas
 
 * Add ThemesForRails::Railtie for configuration, so we selectively set the plugin on or off. Also to be able to change several settings. 
 * Add routes to allow access to the theme's static resources (js and cs), unless cached on public folder by capistrano / rake. 
-* Extend Action View path in order to make the views accessible. Same for the layouts. 
+* -Extend Action View path in order to make the views accessible. Same for the layouts.-
+* More tests ford edge cases. Now I am only testing the happy paths. 
 
 h2. Things to remember.
 
 * -Final version should be a gem. Initialization hooks doesn't work when using this as a plugin (vendor/plugins).-
 * -Research about testing this kind of gem. I really don't have a clue.- Testing in place!
-* I should probably load the theme list at start time, to be able to consult it as needed. I am gonna need that when dealing with runtime  theme selection. Many themes are going to be used simultaneously, so I have to be able to swith view paths as fast as I can. 
-
+* I should probably load the theme list at start time, to be able to consult it as needed. I am gonna need that when dealing with runtime  theme selection. Many themes are going to be used simultaneously, so I have to be able to switch view paths as fast as I can. 
 
 h2. Running tests
 
