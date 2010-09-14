@@ -1,9 +1,14 @@
 module ThemesForRails
-  def self.theme_base_dir
-    Rails.root
-  end
-  def self.available_themes
-    Dir.glob("#{theme_base_dir}/themes/*")
+  class << self
+    def theme_base_dir
+      Rails.root
+    end
+    def available_themes
+      Dir.glob("#{theme_base_dir}/themes/*")
+    end
+    def available_theme_names
+      @available_theme_names ||= available_themes.map {|theme| File.basename(theme) } 
+    end
   end
 end
 
