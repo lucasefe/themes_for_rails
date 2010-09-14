@@ -129,6 +129,10 @@ Inside the themes folder, it create a structure for my_theme.
 rails generate theme_for_rails:theme my_theme  
 </pre>
 
+h2. Documentation
+
+"Read it here":http://rubydoc.info/github/lucasefe/themes_for_rails/master/frames
+
 h2. Ideas
 
 * Add ThemesForRails::Railtie for configuration, so we selectively set the plugin on or off. Also to be able to change several settings. 
