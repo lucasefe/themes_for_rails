@@ -1,4 +1,5 @@
 DummyApp::Application.configure do
+  config.themes_for_rails.base_dir = File.join(Rails.root, "themes")
   # Settings specified here will take precedence over those in config/environment.rb
 
   # The test environment is used exclusively to run your application's

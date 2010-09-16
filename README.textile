@@ -129,6 +129,20 @@ Inside the themes folder, it create a structure for my_theme.
 rails generate theme_for_rails:theme my_theme  
 </pre>
 
+h2. Changing things
+
+At least for now, you can change the ThemesForRails base dir in your app, in the corresponding environment file, or in your application.rb file. Do it like this:
+
+<pre>
+KillerApp::Application.configure do
+  #
+  
+  config.themes_for_rails.base_dir = File.join(Rails.root, "skins")
+
+  #...
+end
+</pre>
+
 h2. Documentation
 
 "Read it here":http://rubydoc.info/github/lucasefe/themes_for_rails/master/frames
@@ -136,7 +150,7 @@ h2. Documentation
 h2. Ideas
 
 * Add ThemesForRails::Railtie for configuration, so we selectively set the plugin on or off. Also to be able to change several settings. 
-* Add routes to allow access to the theme's static resources (js and cs), unless cached on public folder by capistrano / rake. 
+* -Add routes to allow access to the theme's static resources (js and cs), unless cached on public folder by capistrano / rake.-
 * -Extend Action View path in order to make the views accessible. Same for the layouts.-
 * More tests ford edge cases. Now I am only testing the happy paths. 
 
