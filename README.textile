@@ -146,6 +146,11 @@ h2. Things to remember.
 * -Research about testing this kind of gem. I really don't have a clue.- Testing in place!
 * I should probably load the theme list at start time, to be able to consult it as needed. I am gonna need that when dealing with runtime  theme selection. Many themes are going to be used simultaneously, so I have to be able to switch view paths as fast as I can. 
 
+h2. Rails 2 Support
+
+This gem only works with Rails 3 (duh). If you want the same exactly behavior, but for Rails 2.x, go "here":http://github.com/jystewart/theme_support .
+
+
 h2. Running tests
 
 <pre>
