@@ -143,6 +143,21 @@ KillerApp::Application.configure do
 end
 </pre>
 
+h2. Notes and Warnings.
+
+If you are running an app in production mode, and you get the static files with no content, is because you don't have X-senfile enabled at your web server. 
+
+You can do two things:
+
+comment out this line in your production.rb file:
+
+config.action_dispatch.x_sendfile_header = "X-Sendfile"
+
+or 
+
+configure your web server to use it. :)
+
+
 h2. Documentation
 
 "Read it here":http://rubydoc.info/github/lucasefe/themes_for_rails/master/frames
