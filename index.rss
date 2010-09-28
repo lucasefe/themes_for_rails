@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel>
+<title>Lucas Florio's Git Achievements</title>
+<description></description>
+<link></link>
+<item><title>Apprentice Socialite (Level 1)</title><description>pushed a branch to a remote repository using git push</description></item>
+<item><title>Goldsmith (Level 5)</title><description>Reviewed patches before committing with git diff --cached.</description></item>
+<item><title>Apprentice Author (Level 1)</title><description>Made 2^Level commits using git commit.</description></item>
+<item><title>Apprentice Stone Mason (Level 1)</title><description>Added files to the index area for inclusion in the next commit with git add</description></item>
+<item><title>Goldsmith (Level 4)</title><description>Reviewed patches before committing with git diff --cached.</description></item>
+<item><title>Apprentice Architect (Level 1)</title><description>Created a new repository with git init.</description></item>
+<item><title>Garage Inventor</title><description>Used a custom alias for a Git command</description></item>
+<item><title>Apprentice Goldsmith (Level 3)</title><description>Reviewed patches before committing with git diff --cached.</description></item>
+<item><title>Apprentice Goldsmith (Level 2)</title><description>Reviewed patches before committing with git diff --cached.</description></item>
+<item><title>Apprentice Goldsmith (Level 1)</title><description>Reviewed patches before committing with git diff --cached.</description></item>
+<item><title>Student</title><description>Accessed the documentation for a command with git [command] --help</description></item>
+</channel></rss>
