@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Lucas Florio"]
-  s.date = %q{2010-09-16}
+  s.date = %q{2010-10-04}
   s.description = %q{It allows an application to have many different ways of rendering static assets and dynamic views. }
   s.email = %q{lucasefe@gmail.com}
   s.extra_rdoc_files = [
@@ -21,7 +21,12 @@ Gem::Specification.new do |s|
      "Gemfile",
      "Gemfile.lock",
      "README.textile",
+     "REVIEW_NOTES",
+     "RMU_REVIEW",
      "Rakefile",
+     "TODO.textile",
+     "index.html",
+     "index.rss",
      "init.rb",
      "lib/generators/theme_for_rails/install_generator.rb",
      "lib/generators/theme_for_rails/templates/theme/images/.gitkeep",
