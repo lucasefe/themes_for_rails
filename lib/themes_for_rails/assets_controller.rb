@@ -5,13 +5,17 @@ module ThemesForRails
     include ThemesForRails::CommonMethods
     include ThemesForRails::UrlHelpers
     def stylesheets
-      render_asset theme_stylesheet_path_for(params[:theme], params[:asset]), 'text/css'
+      filename = File.basename(params[:asset], File.extname(params[:asset]))
+      render_asset theme_stylesheet_path_for(params[:theme], filename), 'text/css'
     end
     def javascripts
-      render_asset theme_javascript_path_for(params[:theme], params[:asset]), 'text/javascript'
+      filename = File.basename(params[:asset], File.extname(params[:asset]))
+      render_asset theme_javascript_path_for(params[:theme], filename), 'text/javascript'
     end
     def images
-      render_asset theme_image_path_for(params[:theme], params[:asset], params[:extension]), "image/#{params[:extension]}"
+      extension = File.extname(params[:asset])
+      filename = params[:asset].gsub(extension, '')
+      render_asset theme_image_path_for(params[:theme], filename, extension), "image/#{extension.gsub('.', '')}"
     end
   private
     def render_asset(asset, mime_type)
@@ -28,9 +32,7 @@ module ThemesForRails
     def theme_javascript_path_for(name, asset)
       File.join(theme_path_for(name), 'javascripts', "#{asset}.js")
     end
-    def theme_image_path_for(name, asset, extension = nil)
-      extension ||= "png"
-      extension = ".#{extension}"
+    def theme_image_path_for(name, asset, extension = ".png")
       File.join(theme_path_for(name), 'images', "#{asset}#{extension}")
     end
   end

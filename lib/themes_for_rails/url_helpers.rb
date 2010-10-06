@@ -9,14 +9,14 @@ module ThemesForRails
     end
     module InstanceMethods
       def current_theme_stylesheet_path(asset)
-        base_theme_stylesheet_path(:theme => self.theme_name, :asset => asset, :extension => 'css')
+        base_theme_stylesheet_path(:theme => self.theme_name, :asset => "#{asset}.css")
       end
       def current_theme_javascript_path(asset)
-        base_theme_javascript_path(:theme => self.theme_name, :asset => asset, :extension => 'js')
+        base_theme_javascript_path(:theme => self.theme_name, :asset => "#{asset}.js")
       end
       def current_theme_image_path(asset)
         image, extension = asset.split(".")
-        base_theme_image_path(:theme => self.theme_name, :asset => image, :extension => extension)
+        base_theme_image_path(:theme => self.theme_name, :asset => "#{image}.#{extension}")
       end
     end
   end

@@ -7,8 +7,7 @@ module ThemesForRails
         :controller => 'themes_for_rails/assets', 
         :action => 'stylesheets',
         :theme => 'default', 
-        :asset => 'app',
-        :extension => 'css'
+        :asset => 'app.css'
       })
     end
     should "recognize javascripts route" do
@@ -16,8 +15,7 @@ module ThemesForRails
         :controller => 'themes_for_rails/assets', 
         :action => 'javascripts',
         :theme => 'default', 
-        :asset => 'app',
-        :extension => 'js'
+        :asset => 'app.js'
       })
     end
     should "recognize images route" do
@@ -25,8 +23,16 @@ module ThemesForRails
         :controller => 'themes_for_rails/assets', 
         :action => 'images',
         :theme => 'default', 
-        :asset => 'logo',
-        :extension => 'png'
+        :asset => 'logo.png'
+      })
+    end
+    
+    should "recognize nested route" do
+      assert_generates('/themes/default/images/nested/logo.png', { 
+        :controller => 'themes_for_rails/assets', 
+        :action => 'images',
+        :theme => 'default', 
+        :asset => 'nested/logo.png'
       })
     end
   end
