@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{themes_for_rails}
-  s.version = "0.2.3"
+  s.version = "0.2.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Lucas Florio"]
-  s.date = %q{2010-10-04}
+  s.date = %q{2010-10-06}
   s.description = %q{It allows an application to have many different ways of rendering static assets and dynamic views. }
   s.email = %q{lucasefe@gmail.com}
   s.extra_rdoc_files = [
@@ -85,6 +85,7 @@ Gem::Specification.new do |s|
      "test/dummy_app/public/stylesheets/.gitkeep",
      "test/dummy_app/script/rails",
      "test/dummy_app/themes/default/images/logo.png",
+     "test/dummy_app/themes/default/images/nested/logo.png",
      "test/dummy_app/themes/default/javascripts/app.js",
      "test/dummy_app/themes/default/stylesheets/style.css",
      "test/dummy_app/themes/default/stylesheets/style2.css",
