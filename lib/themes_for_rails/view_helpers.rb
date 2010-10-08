@@ -6,7 +6,7 @@ module ThemesForRails
     end
     module InstanceMethods
       def current_theme_stylesheet_path(asset)
-        base_theme_stylesheet_path(:theme => self.theme_name, :asset => "#{asset}.js")
+        base_theme_stylesheet_path(:theme => self.theme_name, :asset => "#{asset}.css")
       end
       def current_theme_javascript_path(asset)
         base_theme_javascript_path(:theme => self.theme_name, :asset => "#{asset}.js")
@@ -17,7 +17,7 @@ module ThemesForRails
       alias_method :theme_image_path, :current_theme_image_path
       alias_method :theme_javascript_path, :current_theme_javascript_path
       alias_method :theme_stylesheet_path, :current_theme_stylesheet_path
-      
+
       def theme_image_tag(source)
         image_tag(theme_image_path(source))
       end
