@@ -143,6 +143,34 @@ KillerApp::Application.configure do
 end
 </pre>
 
+Thanks to matheusca, now you can change the name of the theme's dir.
+
+<pre>
+KillerApp::Application.configure do
+  #
+  
+  config.themes_for_rails.themes_dir = "another_themes"
+
+  #...
+end
+</pre>
+
+
+h2. Another way to change things
+
+If you don't like this approach and prefer something more like an initializer file, you could create one an put something like this. 
+
+<pre>
+# Rails.root/config/initializers/themes_for_rails.rb (for instance)
+ThemesForRails.config do |config|
+  #
+  config.themes_dir = 'another_themes'
+  # ...
+end
+</pre>
+
+
+
 h2. Notes and Warnings.
 
 If you are running an app in production mode, and you get the static files with no content, is because you don't have X-senfile enabled at your web server. 

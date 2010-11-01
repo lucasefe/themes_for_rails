@@ -1,21 +1,20 @@
 module ThemesForRails
   class << self
-    attr_writer :base_dir
-    def base_dir
-      @base_dir ||= Rails.root
+
+    def config
+      @config ||= ThemesForRails::Config.new
+      yield(@config) if block_given?
+      @config
     end
-    def available_themes(path = 'themes')
-      dir_theme_path(path)
+    
+    def available_themes
+      Dir.glob(File.join(config.base_dir, config.themes_dir, "*"))
     end
+    
     def available_theme_names
-      @available_theme_names ||= available_themes.map {|theme| File.basename(theme) } 
+      available_themes.map {|theme| File.basename(theme) } 
     end
-    
-    private
-    
-    def dir_theme_path(path)
-      Dir.glob("#{base_dir}/#{path}/*")
-    end
+
   end
 end
 
