@@ -73,6 +73,9 @@ module ThemesForRails
         @controller.theme 'default'
         assert_equal @controller.send(:current_theme_image_path, "logo.png"), "/themes/default/images/logo.png"
       end
+      should "provide url method to access a given image file in the current theme" do
+        assert_equal @controller.send(:thumb_url, "default"), "/themes/default/images/thumbs.jpg"
+      end
     end
   end
 end

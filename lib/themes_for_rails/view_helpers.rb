@@ -18,7 +18,7 @@ module ThemesForRails
         ThemesForRails.available_theme_names.map(&:capitalize)
       end
       def thumb_url(theme)
-        Dir[File.join(ThemesForRails.config.base_dir, ThemesForRails.config.themes_dir, theme, 'images', 'thumbs.{jpg,gif}').to_s].first
+        self.base_theme_image_path(:theme => theme, :asset => "thumb.{jpg,gif}")
       end
       alias_method :theme_image_path, :current_theme_image_path
       alias_method :theme_javascript_path, :current_theme_javascript_path

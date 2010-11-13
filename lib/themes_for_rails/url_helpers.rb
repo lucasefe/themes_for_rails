@@ -18,6 +18,11 @@ module ThemesForRails
         image, extension = asset.split(".")
         base_theme_image_path(:theme => self.theme_name, :asset => "#{image}.#{extension}")
       end
+      def thumb_url(theme)
+        config = ThemesForRails.config
+        asset = File.basename(Dir[File.join(config.base_dir, config.themes_dir, theme, 'images', 'thumbs.{jpg,gif}').to_s].first)
+        base_theme_image_path(:theme => theme, :asset => asset)
+      end
     end
   end
 end
