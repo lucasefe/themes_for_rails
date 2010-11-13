@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{themes_for_rails}
-  s.version = "0.2.5"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Lucas Florio"]
-  s.date = %q{2010-10-09}
+  s.date = %q{2010-11-01}
   s.description = %q{It allows an application to have many different ways of rendering static assets and dynamic views. }
   s.email = %q{lucasefe@gmail.com}
   s.extra_rdoc_files = [
@@ -25,8 +25,6 @@ Gem::Specification.new do |s|
      "RMU_REVIEW",
      "Rakefile",
      "TODO.textile",
-     "index.html",
-     "index.rss",
      "init.rb",
      "lib/generators/theme_for_rails/install_generator.rb",
      "lib/generators/theme_for_rails/templates/theme/images/.gitkeep",
@@ -38,6 +36,7 @@ Gem::Specification.new do |s|
      "lib/themes_for_rails.rb",
      "lib/themes_for_rails/assets_controller.rb",
      "lib/themes_for_rails/common_methods.rb",
+     "lib/themes_for_rails/config.rb",
      "lib/themes_for_rails/controller_methods.rb",
      "lib/themes_for_rails/railtie.rb",
      "lib/themes_for_rails/routes.rb",
@@ -45,10 +44,18 @@ Gem::Specification.new do |s|
      "lib/themes_for_rails/version.rb",
      "lib/themes_for_rails/view_helpers.rb",
      "test/assets_controller_test.rb",
+     "test/config_test.rb",
      "test/controller_methods_test.rb",
      "test/dummy_app/.gitignore",
      "test/dummy_app/Gemfile",
      "test/dummy_app/Rakefile",
+     "test/dummy_app/another_themes/another_default/images/logo.png",
+     "test/dummy_app/another_themes/another_default/images/nested/logo.png",
+     "test/dummy_app/another_themes/another_default/javascripts/app.js",
+     "test/dummy_app/another_themes/another_default/stylesheets/style.css",
+     "test/dummy_app/another_themes/another_default/stylesheets/style2.css",
+     "test/dummy_app/another_themes/another_default/views/layouts/default.html.erb",
+     "test/dummy_app/another_themes/another_default/views/products/index.html.erb",
      "test/dummy_app/app/controllers/application_controller.rb",
      "test/dummy_app/app/helpers/application_helper.rb",
      "test/dummy_app/app/views/layouts/application.html.erb",
@@ -68,6 +75,7 @@ Gem::Specification.new do |s|
      "test/dummy_app/config/locales/en.yml",
      "test/dummy_app/config/routes.rb",
      "test/dummy_app/db/seeds.rb",
+     "test/dummy_app/empty_themes/.gitkeep",
      "test/dummy_app/lib/tasks/.gitkeep",
      "test/dummy_app/public/404.html",
      "test/dummy_app/public/422.html",
@@ -104,6 +112,7 @@ Gem::Specification.new do |s|
   s.summary = %q{Themes support for rails (3)}
   s.test_files = [
     "test/assets_controller_test.rb",
+     "test/config_test.rb",
      "test/controller_methods_test.rb",
      "test/dummy_app/app/controllers/application_controller.rb",
      "test/dummy_app/app/helpers/application_helper.rb",

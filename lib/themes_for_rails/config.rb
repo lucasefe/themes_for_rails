@@ -1,17 +1,24 @@
 module ThemesForRails
   class Config
-    class << self
-    
-      def initialize(&block)
-        yield
-      end
-      
-      private
 
-      def self.theme_path(path)
-        ThemesForRails.available_themes(path)
-      end
+    attr_writer :base_dir, :themes_dir
     
+    def initialize(&block)
+      yield if block_given?
     end
+    
+    def base_dir
+      @base_dir ||= Rails.root
+    end
+    
+    def themes_dir
+      @themes_dir ||= "themes"
+    end
+    
+    def clear
+      @base_dir = nil
+      @themes_dir = nil
+    end
+
   end  
 end

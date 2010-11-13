@@ -6,7 +6,7 @@ module ThemesForRails
 
     config.to_prepare do
       ThemesForRails::Railtie.config.themes_for_rails.each do |key, value|
-        ThemesForRails.send "#{key}=".to_sym, value
+        ThemesForRails.config.send "#{key}=".to_sym, value
       end
     end
     rake_tasks do
