@@ -10,6 +10,25 @@ class CustomThemeController < ActionController::Base
     render :text => "Just a test"
   end
 end
+
+class ActionMailerInclusionTest < Test::Unit::TestCase
+  should "include the ControllerMethods module" do
+    assert ActionMailer::Base.included_modules.include?(ThemesForRails::ControllerMethods)
+  end
+end
+
+class ActionControllerInclusionTest < Test::Unit::TestCase
+  should "include the ControllerMethods module" do
+    assert ActionController::Base.included_modules.include?(ThemesForRails::ControllerMethods)
+  end
+end
+
+class ApplicationControllerInclusionTest < Test::Unit::TestCase
+  should "include the ControllerMethods module" do
+    assert ApplicationController.included_modules.include?(ThemesForRails::ControllerMethods)
+  end
+end
+
 module ThemesForRails
   class ControllerMethodsTest < ActionController::TestCase  
     context "at class level" do
