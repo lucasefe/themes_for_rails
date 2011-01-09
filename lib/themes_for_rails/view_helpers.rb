@@ -25,9 +25,11 @@ module ThemesForRails
         files.collect! {|file| theme_javascript_path(file) }
         javascript_include_tag *files
       end
-      def theme_stylesheet_link_tag(*files)
-        files.collect! {|file| theme_stylesheet_path(file) }
-        stylesheet_link_tag *files
+      def theme_stylesheet_link_tags(*files)
+        files.each {|file| theme_stylesheet_link_tag file }
+      end
+      def theme_stylesheet_link_tag(file, *opts)
+        stylesheet_link_tag theme_stylesheet_path(file), *opts
       end
     end
   end
