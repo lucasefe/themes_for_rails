@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Test Application</title>
+    <%= theme_stylesheet_link_tag 'style' %>
+    <%= theme_stylesheet_link_tag 'style2', :media => 'screen, projection' %>
+    <%= theme_stylesheet_link_tag 'style3', :media => 'print' %>
+    <%= theme_stylesheet_link_tags 'style4', 'style5', 'style6' %>
+    <%= theme_javascript_include_tag 'app' %>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
+</html>
