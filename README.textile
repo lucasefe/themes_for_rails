@@ -120,13 +120,13 @@ h2. Generators
 For now, it only creates the theme folder.
 
 <pre>
-rails generate theme_for_rails:install  
+rails generate themes_for_rails:install  
 </pre>
 
 Inside the themes folder, it create a structure for my_theme.
 
 <pre>
-rails generate theme_for_rails:theme my_theme  
+rails generate themes_for_rails:theme my_theme  
 </pre>
 
 h2. Changing things

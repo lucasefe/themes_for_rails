@@ -1,4 +1,4 @@
-module ThemeForRails
+module ThemesForRails
   module Generators
     class InstallGenerator < Rails::Generators::Base
       desc "Creates a ThemeForRails basic structure."
