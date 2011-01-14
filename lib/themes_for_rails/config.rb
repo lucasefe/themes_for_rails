@@ -5,7 +5,7 @@ module ThemesForRails
     attr_accessor :use_sass
     
     def initialize(&block)
-      @use_sass = false
+      @use_sass = true
       yield if block_given?
     end
     

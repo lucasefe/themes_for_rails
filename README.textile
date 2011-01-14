@@ -157,15 +157,16 @@ end
 
 h2. Sass support
 
-Configure your app like this, and in load time themes_for_rails will add all your theme's stylesheets path to Sass, so Sass knows how to compile your sass files. 
+ThemesForRails will automatically add the themes paths to Sass, if sass is available. 
 
 For instance, everything you put inside themes/my_theme/stylesheets/sass will get compiled into themes/my_theme/stylesheets (duh, right?)
 
+To bypass sass configuration, do this:
 <pre>
 KillerApp::Application.configure do
   #
   
-  config.themes_for_rails.use_sass = true
+  config.themes_for_rails.use_sass = false
 
   #...
 end
