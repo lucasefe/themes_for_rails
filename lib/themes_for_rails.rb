@@ -14,7 +14,20 @@ module ThemesForRails
     def available_theme_names
       available_themes.map {|theme| File.basename(theme) } 
     end
-
+    
+    def add_themes_path_to_sass
+      each_theme_dir do |dir|
+        if File.directory?(dir) # Need to get rid of the '.' and '..'
+          Sass::Plugin.add_template_location "#{dir}/stylesheets/sass", "#{dir}/stylesheets"
+        end
+      end
+    end
+    
+    def each_theme_dir
+      Dir.glob(File.join(Rails.root, config.themes_dir, "*")) do |theme_dir|
+        yield(theme_dir) if block_given?
+      end
+    end
   end
 end
 

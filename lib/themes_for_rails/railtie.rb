@@ -8,7 +8,12 @@ module ThemesForRails
       ThemesForRails::Railtie.config.themes_for_rails.each do |key, value|
         ThemesForRails.config.send "#{key}=".to_sym, value
       end
+      
+      # Adding theme stylesheets path to sass, automatically. 
+      ThemesForRails.add_themes_path_to_sass if ThemesForRails.config.use_sass?
+      
     end
+    
     rake_tasks do
       load "tasks/themes_for_rails.rake"
     end
