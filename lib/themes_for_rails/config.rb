@@ -23,8 +23,11 @@ module ThemesForRails
     end
 
     def use_sass?
-      @use_sass and defined?Sass::Plugin
+      @use_sass and sass_is_available?
     end
 
+    def sass_is_available?
+      !!defined?Sass::Plugin
+    end
   end  
 end
