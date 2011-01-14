@@ -7,26 +7,27 @@ module ThemesForRails
     include ThemesForRails::UrlHelpers
     
     def stylesheets
-      filename, extension = extract_filename_and_extension_from(params[:asset])
-      render_asset theme_stylesheet_path_for(params[:theme], filename, extension), mime_type_from(extension)
+      render_asset asset_path_for(params[:asset], 'stylesheets'), mime_type_from(params[:asset])
     end
     
     def javascripts
-      filename, extension = extract_filename_and_extension_from(params[:asset])
-      render_asset theme_javascript_path_for(params[:theme], filename), mime_type_from(extension)
+      render_asset asset_path_for(params[:asset], 'javascripts'), mime_type_from(params[:asset])  
     end
     
     def images
-      filename, extension = extract_filename_and_extension_from(params[:asset])
-      render_asset theme_image_path_for(params[:theme], filename, extension), mime_type_from(extension)
+      render_asset asset_path_for(params[:asset], 'images'), mime_type_from(params[:asset])  
     end
     
   private
   
+    def asset_path_for(asset_url, asset_prefix)
+      File.join(theme_path_for(params[:theme]), asset_prefix, params[:asset])
+    end
+    
     def extract_filename_and_extension_from(asset)
       extension = File.extname(asset)
       filename = params[:asset].gsub(extension, '')
-      return filename, extension
+      return filename, extension[1..-1]
     end
     
     def render_asset(asset, mime_type)
@@ -36,20 +37,9 @@ module ThemesForRails
         send_file asset, :type => mime_type
       end
     end
-    
-    # Physical paths
-    def theme_stylesheet_path_for(name, asset, extension = ".css")
-      File.join(theme_path_for(name), 'stylesheets', "#{asset}#{extension}")
-    end
-    def theme_javascript_path_for(name, asset, extension = ".js")
-      File.join(theme_path_for(name), 'javascripts', "#{asset}#{extension}")
-    end
-    def theme_image_path_for(name, asset, extension = ".png")
-      File.join(theme_path_for(name), 'images', "#{asset}#{extension}")
-    end
-    
-    def mime_type_from(extension)
-      extension = extension.downcase[1..-1]
+  
+    def mime_type_from(asset_path)
+      extension = extract_filename_and_extension_from(asset_path).last
       if extension == 'css'
         "text/css"
       elsif extension == 'js'

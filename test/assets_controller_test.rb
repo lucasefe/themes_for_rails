@@ -37,7 +37,7 @@ module ThemesForRails
     should "respond with the right image file when requested" do
       get 'images', { :theme => 'default', :asset => 'logo.png'}
       assert_response :success
-      assert_equal @response.content_type, 'image/png'
+      assert_equal  'image/png', @response.content_type
     end
     should "not be success when the image file is not found" do
       get 'images', { :theme => 'default', :asset => 'i_am_not_here.jpg'}
@@ -47,7 +47,7 @@ module ThemesForRails
     should "respond with a nested asset" do
       get 'images', { :theme => 'default', :asset => 'nested/logo.png'}
       assert_response :success
-      assert_equal @response.content_type, 'image/png'
+      assert_equal 'image/png', @response.content_type
     end
     
     should "respond with properly even when requesting an image inside the stylesheets folder" do
