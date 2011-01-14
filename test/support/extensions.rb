@@ -1,9 +1,11 @@
 require 'active_support/test_case'
 
 class ActiveSupport::TestCase
+  
   def assert_named_route(result, name)
     assert_equal result, @routes.url_helpers.send(name)
   end
+  
   def assert_send_file(result)
     assert(@response.body.is_a? Proc)
     require 'stringio'
@@ -13,4 +15,5 @@ class ActiveSupport::TestCase
     puts "OUT: #{output.output}"
     assert_equal(result, output.string)
   end
+  
 end
