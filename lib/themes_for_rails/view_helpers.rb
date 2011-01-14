@@ -33,7 +33,8 @@ module ThemesForRails
       def theme_stylesheet_link_tag(*files)
         options = files.extract_options!
         files.collect! {|file| theme_stylesheet_path(file) }
-        stylesheet_link_tag *files, options
+        files << options
+        stylesheet_link_tag(*files)
       end
     end
   end
