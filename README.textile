@@ -235,3 +235,9 @@ rake
 h2. Authors and contributors
 
 * lucasefe
+
+h2. Last but not least
+
+If you are using this gem, please, take a minute to recommend me at Working With Rails. 
+
+<a href="http://www.workingwithrails.com/recommendation/new/person/7277-lucas-florio"><img alt="Recommend Me" src="http://workingwithrails.com/images/tools/compact-small.jpg" /></a>
