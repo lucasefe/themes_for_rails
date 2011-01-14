@@ -23,7 +23,7 @@ module ThemesForRails
             sass_dir = "#{dir}/stylesheets/sass"
             css_dir = "#{dir}/stylesheets"
 
-            unless Sass::Plugin.template_location_array.any? { |template_location| template_location[0] == sass_dir }
+            unless already_configured_in_sass?(sass_dir)
               Sass::Plugin.add_template_location sass_dir, css_dir 
             end
           end
@@ -31,6 +31,10 @@ module ThemesForRails
       else
         raise "Sass is not available. What are you trying to do?"
       end
+    end
+    
+    def already_configured_in_sass?(sass_dir)
+      Sass::Plugin.template_location_array.map(&:first).include?(sass_dir)
     end
     
     def each_theme_dir
