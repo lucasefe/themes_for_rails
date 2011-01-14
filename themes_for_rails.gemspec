@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Lucas Florio"]
-  s.date = %q{2010-12-23}
+  s.date = %q{2011-01-14}
   s.description = %q{It allows an application to have many different ways of rendering static assets and dynamic views. }
   s.email = %q{lucasefe@gmail.com}
   s.extra_rdoc_files = [
@@ -26,12 +26,12 @@ Gem::Specification.new do |s|
      "Rakefile",
      "TODO.textile",
      "init.rb",
-     "lib/generators/theme_for_rails/install_generator.rb",
-     "lib/generators/theme_for_rails/templates/theme/images/.gitkeep",
-     "lib/generators/theme_for_rails/templates/theme/javascripts/.gitkeep",
-     "lib/generators/theme_for_rails/templates/theme/stylesheets/.gitkeep",
-     "lib/generators/theme_for_rails/templates/theme/views/layouts/.gitkeep",
-     "lib/generators/theme_for_rails/theme_generator.rb",
+     "lib/generators/themes_for_rails/install_generator.rb",
+     "lib/generators/themes_for_rails/templates/theme/images/.gitkeep",
+     "lib/generators/themes_for_rails/templates/theme/javascripts/.gitkeep",
+     "lib/generators/themes_for_rails/templates/theme/stylesheets/.gitkeep",
+     "lib/generators/themes_for_rails/templates/theme/views/layouts/.gitkeep",
+     "lib/generators/themes_for_rails/theme_generator.rb",
      "lib/tasks/themes_for_rails.rake",
      "lib/themes_for_rails.rb",
      "lib/themes_for_rails/assets_controller.rb",
@@ -95,6 +95,7 @@ Gem::Specification.new do |s|
      "test/dummy_app/themes/default/images/logo.png",
      "test/dummy_app/themes/default/images/nested/logo.png",
      "test/dummy_app/themes/default/javascripts/app.js",
+     "test/dummy_app/themes/default/stylesheets/images/logo.png",
      "test/dummy_app/themes/default/stylesheets/style.css",
      "test/dummy_app/themes/default/stylesheets/style2.css",
      "test/dummy_app/themes/default/views/layouts/default.html.erb",
@@ -103,6 +104,7 @@ Gem::Specification.new do |s|
      "test/support/extensions.rb",
      "test/test_helper.rb",
      "test/themes_for_rails_test.rb",
+     "test/view_helpers_test.rb",
      "themes_for_rails.gemspec"
   ]
   s.homepage = %q{http://github.com/lucasefe/themes_for_rails}
@@ -132,7 +134,8 @@ Gem::Specification.new do |s|
      "test/routes_test.rb",
      "test/support/extensions.rb",
      "test/test_helper.rb",
-     "test/themes_for_rails_test.rb"
+     "test/themes_for_rails_test.rb",
+     "test/view_helpers_test.rb"
   ]
 
   if s.respond_to? :specification_version then
