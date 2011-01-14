@@ -13,12 +13,12 @@ module ThemesForRails
     
     def javascripts
       filename, extension = extract_filename_and_extension_from(params[:asset])
-      render_asset theme_javascript_path_for(params[:theme], filename), 'text/javascript'
+      render_asset theme_javascript_path_for(params[:theme], filename), mime_type_from(extension)
     end
     
     def images
       filename, extension = extract_filename_and_extension_from(params[:asset])
-      render_asset theme_image_path_for(params[:theme], filename, extension), "image/#{extension.gsub('.', '')}"
+      render_asset theme_image_path_for(params[:theme], filename, extension), mime_type_from(extension)
     end
     
   private
@@ -31,7 +31,6 @@ module ThemesForRails
     
     def render_asset(asset, mime_type)
       unless File.exists?(asset)
-        puts asset
         render :text => 'not found', :status => 404
       else
         send_file asset, :type => mime_type
