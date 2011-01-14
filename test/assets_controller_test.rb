@@ -49,5 +49,11 @@ module ThemesForRails
       assert_response :success
       assert_equal @response.content_type, 'image/png'
     end
+    
+    should "respond with properly even when requesting an image inside the stylesheets folder" do
+      get 'stylesheets', { :theme => 'default', :asset => 'images/logo.png'}
+      assert_response :success
+      assert_equal @response.content_type, 'image/png'
+    end
   end
 end
