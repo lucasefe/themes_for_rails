@@ -18,7 +18,13 @@ module ThemesForRails
     def add_themes_path_to_sass
       each_theme_dir do |dir|
         if File.directory?(dir) # Need to get rid of the '.' and '..'
-          Sass::Plugin.add_template_location "#{dir}/stylesheets/sass", "#{dir}/stylesheets"
+
+          sass_dir = "#{dir}/stylesheets/sass"
+          css_dir = "#{dir}/stylesheets"
+
+          unless Sass::Plugin.template_location_array.any? { |template_location| template_location[0] == sass_dir }
+            Sass::Plugin.add_template_location sass_dir, css_dir 
+          end
         end
       end
     end
