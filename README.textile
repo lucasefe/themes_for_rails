@@ -117,7 +117,7 @@ theme_stylesheet_path
 
 h2. Generators
 
-For now, it only creates the theme folder.
+For now, it only creates the theme folder and add the "themes_for_rails" route in the routes.rb.
 
 <pre>
 rails generate themes_for_rails:install  
