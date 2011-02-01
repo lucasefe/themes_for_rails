@@ -7,7 +7,7 @@ module ThemesForRails
       @cached_theme_name ||= begin
         case @theme_name
         when Symbol then 
-          self.respond_to?(@theme_name) ? self.send(@theme_name) : @theme_name.to_s
+          self.respond_to?(@theme_name, true) ? self.send(@theme_name) : @theme_name.to_s
         when String then @theme_name
         else
           nil

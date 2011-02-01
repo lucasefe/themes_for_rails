@@ -9,6 +9,21 @@ class CustomThemeController < ActionController::Base
   def hello
     render :text => "Just a test"
   end
+  
+  def theme_selector
+    'custom'
+  end
+end
+class PrivateCustomThemeController < ActionController::Base
+  def hello
+    render :text => "Just a test"
+  end
+
+  private
+  
+  def private_theme_selector
+    'private_custom'
+  end
 end
 
 class ActionMailerInclusionTest < Test::Unit::TestCase
@@ -46,11 +61,18 @@ module ThemesForRails
       end
       context "setting the theme with a Symbol" do
         tests CustomThemeController
-        should "call the selected method" do
-          @controller.expects(:theme_selector).returns('custom')
+        should "call the selected private method" do
           CustomThemeController.theme :theme_selector
-          assert_equal nil, @controller.theme_name
           get :hello
+          assert_equal 'custom', @controller.theme_name
+        end
+      end
+      context "setting the theme with a Symbol" do
+        tests PrivateCustomThemeController
+        should "call the selected private method" do
+          PrivateCustomThemeController.theme :private_theme_selector
+          get :hello
+          assert_equal 'private_custom', @controller.theme_name
         end
       end
     end
