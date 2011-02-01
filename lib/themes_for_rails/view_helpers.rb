@@ -21,8 +21,8 @@ module ThemesForRails
       alias_method :theme_javascript_path, :current_theme_javascript_path
       alias_method :theme_stylesheet_path, :current_theme_stylesheet_path
 
-      def theme_image_tag(source)
-        image_tag(theme_image_path(source))
+      def theme_image_tag(source, options = {})
+        image_tag(theme_image_path(source), options)
       end
       
       def theme_javascript_include_tag(*files)

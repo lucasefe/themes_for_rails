@@ -23,5 +23,9 @@ module ThemesForRails
     should 'delegate options (lazy testing, I know)' do
       assert theme_stylesheet_link_tag('cuac.css', :media => 'print').include?('media="print"')
     end
+    
+    should 'delegate to image_tag with options' do
+      assert theme_image_tag('logo.png', :alt => 'This is a Logo').include?('alt="This is a Logo"')
+    end
   end
 end
