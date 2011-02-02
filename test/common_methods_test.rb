@@ -1,4 +1,4 @@
-require 'test_helper'
+require File.expand_path("test/test_helper.rb")
 
 class ThemesForRailsTest < Test::Unit::TestCase
   setup do

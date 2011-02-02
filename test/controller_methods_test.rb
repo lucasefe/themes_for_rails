@@ -1,4 +1,4 @@
-require "test_helper"
+require File.expand_path("test/test_helper.rb")
 
 class MyController < ActionController::Base
   def hello
@@ -67,7 +67,7 @@ module ThemesForRails
           assert_equal 'custom', @controller.theme_name
         end
       end
-      context "setting the theme with a Symbol" do
+      context "setting the theme with a Symbol (private)" do
         tests PrivateCustomThemeController
         should "call the selected private method" do
           PrivateCustomThemeController.theme :private_theme_selector
