@@ -1,8 +1,8 @@
 module ThemesForRails
   module ViewHelpers
-    
+
     extend ActiveSupport::Concern
-  
+
     included do
       include ThemesForRails::CommonMethods
     end
@@ -16,20 +16,20 @@ module ThemesForRails
       def current_theme_image_path(asset)
         base_theme_image_path(:theme => self.theme_name, :asset => asset)
       end
-      
+
       alias_method :theme_image_path, :current_theme_image_path
       alias_method :theme_javascript_path, :current_theme_javascript_path
       alias_method :theme_stylesheet_path, :current_theme_stylesheet_path
 
-      def theme_image_tag(source)
-        image_tag(theme_image_path(source))
+      def theme_image_tag(source, options = {})
+        image_tag(theme_image_path(source), options)
       end
-      
+
       def theme_javascript_include_tag(*files)
         files.collect! {|file| theme_javascript_path(file) }
         javascript_include_tag *files
       end
-      
+
       def theme_stylesheet_link_tag(*files)
         options = files.extract_options!
         files.collect! {|file| theme_stylesheet_path(file) }
