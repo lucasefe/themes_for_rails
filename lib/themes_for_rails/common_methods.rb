@@ -6,7 +6,7 @@ module ThemesForRails
     def theme_name
       @cached_theme_name ||= begin
         case @theme_name
-        when Symbol then 
+        when Symbol then
           self.respond_to?(@theme_name) ? self.send(@theme_name) : @theme_name.to_s
         when String then @theme_name
         else
@@ -18,10 +18,10 @@ module ThemesForRails
       @theme_name = name
     end
     def set_theme(name)
-      self.theme_name = name    
+      self.theme_name = name
       if valid_theme?
-        add_theme_view_path 
-      end    
+        add_theme_view_path
+      end
     end
   public
     def valid_theme?
@@ -38,11 +38,11 @@ module ThemesForRails
     def public_theme_path
       theme_path("/")
     end
-    def theme_path(base = ::Rails.root)
+    def theme_path(base = ThemesForRails.config.base_dir)
       theme_path_for(theme_name, base)
     end
-    def theme_path_for(name, base = ::Rails.root)
-      File.join(base, "themes", name)
+    def theme_path_for(name, base = ThemesForRails.config.base_dir, theme_dir = ThemesForRails.config.themes_dir)
+      File.join(base, theme_dir, name)
     end
   end
 end
