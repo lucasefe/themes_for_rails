@@ -235,6 +235,9 @@ rake
 h2. Authors and contributors
 
 * lucasefe
+* jbarreneche
+* kule
+* matheusmoreira
 
 h2. Last but not least
 
