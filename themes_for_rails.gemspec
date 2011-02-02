@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{themes_for_rails}
-  s.version = "0.4.0"
+  s.version = "0.4.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Lucas Florio"]
-  s.date = %q{2011-01-14}
+  s.date = %q{2011-02-02}
   s.description = %q{It allows an application to have many different ways of rendering static assets and dynamic views. }
   s.email = %q{lucasefe@gmail.com}
   s.extra_rdoc_files = [
@@ -44,6 +44,7 @@ Gem::Specification.new do |s|
      "lib/themes_for_rails/version.rb",
      "lib/themes_for_rails/view_helpers.rb",
      "test/assets_controller_test.rb",
+     "test/common_methods_test.rb",
      "test/config_test.rb",
      "test/controller_methods_test.rb",
      "test/dummy_app/.gitignore",
@@ -114,6 +115,7 @@ Gem::Specification.new do |s|
   s.summary = %q{Themes support for rails (3)}
   s.test_files = [
     "test/assets_controller_test.rb",
+     "test/common_methods_test.rb",
      "test/config_test.rb",
      "test/controller_methods_test.rb",
      "test/dummy_app/app/controllers/application_controller.rb",
