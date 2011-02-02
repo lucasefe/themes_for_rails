@@ -137,7 +137,7 @@ At least for now, you can change the ThemesForRails base dir in your app, in the
 KillerApp::Application.configure do
   #
   
-  config.themes_for_rails.base_dir = File.join(Rails.root, "skins")
+  config.themes_for_rails.base_dir = File.join(Rails.root, "tmp")
 
   #...
 end

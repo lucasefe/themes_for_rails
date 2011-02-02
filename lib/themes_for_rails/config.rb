@@ -17,6 +17,10 @@ module ThemesForRails
       @themes_dir ||= "themes"
     end
     
+    def themes_path
+      File.join(base_dir, themes_dir)
+    end
+    
     def clear
       @base_dir = nil
       @themes_dir = nil

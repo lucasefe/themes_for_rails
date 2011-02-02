@@ -4,7 +4,7 @@ module ThemesForRails
       desc "Creates a ThemeForRails basic structure."
 
       def create_themes_folder
-        empty_directory(File.join(Rails.root, 'themes'))
+        empty_directory(ThemesForRails.config.themes_path)
       end
       
       def add_themes_for_rails_routes
