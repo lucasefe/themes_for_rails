@@ -7,9 +7,10 @@ module ThemesForRails
       @config
     end
     
-    def available_themes
-      Dir.glob(File.join(config.base_dir, config.themes_dir, "*"))
+    def available_themes(&block)
+      Dir.glob(File.join(config.base_dir, config.themes_dir, "*"), &block) 
     end
+    alias each_theme_dir available_themes
     
     def available_theme_names
       available_themes.map {|theme| File.basename(theme) } 
@@ -37,11 +38,6 @@ module ThemesForRails
       Sass::Plugin.template_location_array.map(&:first).include?(sass_dir)
     end
     
-    def each_theme_dir
-      Dir.glob(File.join(Rails.root, config.themes_dir, "*")) do |theme_dir|
-        yield(theme_dir) if block_given?
-      end
-    end
   end
 end
 
