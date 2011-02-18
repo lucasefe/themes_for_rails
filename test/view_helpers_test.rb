@@ -16,7 +16,7 @@ module ThemesForRails
       @config ||= stub({:perform_caching => false, :asset_path => "/assets", :asset_host => ''})
     end
 
-    should "privide path helpers for a given theme name" do
+    should "provide path helpers for a given theme name" do
       
       assert_equal "/themes/sometheme/stylesheets/style.css", theme_stylesheet_path('style', "sometheme")
       assert_equal "/themes/sometheme/javascripts/app.js", theme_javascript_path('app', "sometheme")
