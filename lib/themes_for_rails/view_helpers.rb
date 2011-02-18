@@ -17,10 +17,18 @@ module ThemesForRails
         base_theme_image_path(:theme => self.theme_name, :asset => asset)
       end
 
-      alias_method :theme_image_path, :current_theme_image_path
-      alias_method :theme_javascript_path, :current_theme_javascript_path
-      alias_method :theme_stylesheet_path, :current_theme_stylesheet_path
+      def theme_stylesheet_path(asset, new_theme_name = self.theme_name)
+        base_theme_stylesheet_path(:theme => new_theme_name, :asset => "#{asset}.css")
+      end
 
+      def theme_javascript_path(asset, new_theme_name = self.theme_name)
+        base_theme_javascript_path(:theme => new_theme_name, :asset => "#{asset}.js")
+      end
+
+      def theme_image_path(asset, new_theme_name = self.theme_name)
+        base_theme_image_path(:theme => new_theme_name, :asset => asset)
+      end
+      
       def theme_image_tag(source, options = {})
         image_tag(theme_image_path(source), options)
       end
