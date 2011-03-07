@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Lucas Florio"]
-  s.date = %q{2011-03-06}
-  s.description = %q{It allows an application to have many different ways of rendering static assets and dynamic views. }
+  s.date = %q{2011-03-07}
+  s.description = %q{It allows an application to have many different ways of rendering static assets and dynamic views.}
   s.email = %q{lucasefe@gmail.com}
   s.extra_rdoc_files = [
     "README.textile"
@@ -37,6 +37,7 @@ Gem::Specification.new do |s|
     "lib/themes_for_rails/common_methods.rb",
     "lib/themes_for_rails/config.rb",
     "lib/themes_for_rails/controller_methods.rb",
+    "lib/themes_for_rails/mailer_methods.rb",
     "lib/themes_for_rails/railtie.rb",
     "lib/themes_for_rails/routes.rb",
     "lib/themes_for_rails/url_helpers.rb",
@@ -100,6 +101,7 @@ Gem::Specification.new do |s|
     "test/dummy_app/themes/default/stylesheets/style2.css",
     "test/dummy_app/themes/default/views/layouts/default.html.erb",
     "test/dummy_app/themes/default/views/products/index.html.erb",
+    "test/mailer_methods_test.rb",
     "test/routes_test.rb",
     "test/support/extensions.rb",
     "test/test_helper.rb",
@@ -144,12 +146,12 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<themes_for_rails>, [">= 0"])
-      s.add_runtime_dependency(%q<sqlite3>, [">= 0"])
-      s.add_runtime_dependency(%q<test-unit>, [">= 0"])
-      s.add_runtime_dependency(%q<rspec-rails>, [">= 2.0.0.beta.20"])
-      s.add_runtime_dependency(%q<jeweler>, [">= 0"])
-      s.add_runtime_dependency(%q<contest>, [">= 0"])
-      s.add_runtime_dependency(%q<mocha>, [">= 0"])
+      s.add_development_dependency(%q<sqlite3>, [">= 0"])
+      s.add_development_dependency(%q<test-unit>, [">= 0"])
+      s.add_development_dependency(%q<rspec-rails>, [">= 2.0.0.beta.20"])
+      s.add_development_dependency(%q<jeweler>, [">= 0"])
+      s.add_development_dependency(%q<contest>, [">= 0"])
+      s.add_development_dependency(%q<mocha>, [">= 0"])
       s.add_runtime_dependency(%q<rails>, ["~> 3.0.0"])
     else
       s.add_dependency(%q<themes_for_rails>, [">= 0"])
