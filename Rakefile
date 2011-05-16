@@ -21,13 +21,13 @@ begin
   Jeweler::Tasks.new do |gemspec|
     gemspec.name = "themes_for_rails"
     gemspec.summary = "Themes support for rails (3)"
-    gemspec.description = "It allows an application to have many different ways of rendering static assets and dynamic views. "
+    gemspec.description = "It allows an application to have many different ways of rendering static assets and dynamic views."
     gemspec.email = "lucasefe@gmail.com"
     gemspec.homepage = "http://github.com/lucasefe/themes_for_rails"
     gemspec.authors = ["Lucas Florio"]
     gemspec.version = ThemesForRails::VERSION
+    gemspec.add_dependency "rails", "~> 3.0.0"
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: gem install jeweler"
 end
-
