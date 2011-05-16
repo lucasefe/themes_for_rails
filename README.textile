@@ -87,6 +87,21 @@ end
 
 As a general rule, when passing a String, that becomes the theme name, but when a Symbol is sent, it gets treated as method message. 
 
+
+h3. Action Mailer integration:
+
+As a plus, you can use it from Action Mailer too (thanks to rafaelss) like this:
+
+<pre>
+class MyMailer < ActionMailer::Base
+
+  def notify_someone
+    mail :theme => "blue" , :to => "some@one.com"
+  end
+
+end
+</pre>
+
 h3. Url Helpers
 
 In your views you should be able to access your assets like this (given the theme 'default' is set):
