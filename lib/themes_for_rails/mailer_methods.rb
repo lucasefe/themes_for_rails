@@ -9,7 +9,7 @@ module ThemesForRails
     module InstanceMethods
 
       def mail_with_theme(headers = {}, &block)
-        theme(headers.delete(:theme)) if headers[:theme]
+        theme(self.class.default[:theme]) if self.class.default[:theme]
 
         mail_without_theme(headers, &block)
       end
