@@ -102,6 +102,20 @@ class MyMailer < ActionMailer::Base
 end
 </pre>
 
+Or set the theme by default like this (thanks to maxjgon):
+
+<pre>
+class MyMailer < ActionMailer::Base
+
+  default :theme => "blue"
+   
+  def notify_someone
+    mail :to => "some@one.com"
+  end
+
+end
+</pre>
+
 h3. Url Helpers
 
 In your views you should be able to access your assets like this (given the theme 'default' is set):
@@ -253,6 +267,8 @@ h2. Authors and contributors
 * jbarreneche
 * kule
 * matheusmoreira
+* rafaelss
+* maxjgon
 
 h2. Last but not least
 
