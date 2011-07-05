@@ -6,11 +6,9 @@ namespace :themes do
       theme_dir = ThemesForRails.config.themes_dir
       theme_base = "#{Rails.public_path}/#{theme_dir}/#{theme_name}"
       puts "Creating #{theme_base}"
-  
-      FileUtils.mkdir_p "#{theme_base}"      
-      FileUtils.cp_r "#{theme}/images", "#{theme_base}/images", :verbose => true
-      FileUtils.cp_r "#{theme}/stylesheets", "#{theme_base}/stylesheets", :verbose => true
-      FileUtils.cp_r "#{theme}/javascripts", "#{theme_base}/javascripts", :verbose => true
+
+      FileUtils.mkdir_p "#{theme_base}"
+      FileUtils.cp_r Dir["#{theme}/{images,stylesheets,javascripts}"], theme_base, :verbose => true
     end
   end
   desc "Removes the cached (public) theme folders"
