@@ -26,7 +26,7 @@ begin
     gemspec.homepage = "http://github.com/lucasefe/themes_for_rails"
     gemspec.authors = ["Lucas Florio"]
     gemspec.version = ThemesForRails::VERSION
-    gemspec.add_dependency "rails", "~> 3.0.0"
+    gemspec.add_dependency "rails", "> 3.0.0"
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: gem install jeweler"
