@@ -6,9 +6,8 @@ module ThemesForRails
       
       def create_theme
         theme_dir = File.join(ThemesForRails.config.themes_path, name)
-        directory  'theme', theme_dir
+        directory 'theme', theme_dir
       end
-
     end
   end
 end
