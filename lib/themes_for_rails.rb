@@ -1,6 +1,18 @@
-module ThemesForRails
-  class << self
+require 'active_support/dependencies'
 
+module ThemesForRails
+
+  autoload :Config,            'themes_for_rails/config'
+  autoload :CommonMethods,     'themes_for_rails/common_methods'
+  autoload :UrlHelpers,        'themes_for_rails/url_helpers'
+  autoload :ViewHelpers,       'themes_for_rails/view_helpers'
+  autoload :ControllerMethods, 'themes_for_rails/controller_methods'
+  autoload :MailerMethods,     'themes_for_rails/mailer_methods'
+  autoload :Railtie,           'themes_for_rails/railtie'
+  autoload :Routes,            'themes_for_rails/routes'
+  autoload :Version,           'themes_for_rails/version'
+
+  class << self
     def config
       @config ||= ThemesForRails::Config.new
       yield(@config) if block_given?
@@ -37,18 +49,5 @@ module ThemesForRails
     def already_configured_in_sass?(sass_dir)
       Sass::Plugin.template_location_array.map(&:first).include?(sass_dir)
     end
-    
   end
 end
-
-require 'active_support/dependencies'
-require 'themes_for_rails/config'
-require 'themes_for_rails/common_methods'
-require 'themes_for_rails/url_helpers'
-require 'themes_for_rails/view_helpers'
-require 'themes_for_rails/assets_controller'
-require 'themes_for_rails/controller_methods'
-require 'themes_for_rails/mailer_methods'
-require 'themes_for_rails/railtie'
-require 'themes_for_rails/routes'
-require 'themes_for_rails/version'
