@@ -1,5 +1,1 @@
-if [[ -n "$rvm_environments_path" && -s "$rvm_environments_path/ruby-1.9.2-p180@theme_support" ]] ; then
-  \. "$rvm_environments_path/ruby-1.9.2-p180@theme_support"
-else
-  rvm --create use  "ruby-1.9.2-p180@theme_support"
-fi
+rvm use 1.9.2@themes_for_rails --create
