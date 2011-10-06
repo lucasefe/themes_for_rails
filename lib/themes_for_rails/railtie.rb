@@ -14,8 +14,8 @@ module ThemesForRails
       
     end
     
-    rake_tasks do
-      load "tasks/themes_for_rails.rake"
-    end
+    #rake_tasks do
+    #  load "tasks/themes_for_rails.rake"
+    #end
   end
 end
