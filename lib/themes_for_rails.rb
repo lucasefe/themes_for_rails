@@ -1,7 +1,15 @@
 require 'active_support/dependencies'
+require 'themes_for_rails/config'
+require 'themes_for_rails/common_methods'
+require 'themes_for_rails/view_helpers'
+require 'themes_for_rails/controller_methods'
+require 'themes_for_rails/mailer_methods'
+require 'themes_for_rails/railtie'
+require 'themes_for_rails/version'
 
 module ThemesForRails
 
+=begin
   autoload :Config,            'themes_for_rails/config'
   autoload :CommonMethods,     'themes_for_rails/common_methods'
   autoload :ViewHelpers,       'themes_for_rails/view_helpers'
@@ -9,6 +17,7 @@ module ThemesForRails
   autoload :MailerMethods,     'themes_for_rails/mailer_methods'
   autoload :Railtie,           'themes_for_rails/railtie'
   autoload :Version,           'themes_for_rails/version'
+=end
 
   class << self
     def config

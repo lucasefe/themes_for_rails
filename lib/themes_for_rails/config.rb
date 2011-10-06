@@ -2,10 +2,10 @@ module ThemesForRails
   class Config
 
     attr_writer :base_dir, :themes_dir
-    attr_accessor :use_sass
+    #attr_accessor :use_sass
     
     def initialize(&block)
-      @use_sass = true
+      #@use_sass = true
       yield if block_given?
     end
     
@@ -14,7 +14,7 @@ module ThemesForRails
     end
     
     def themes_dir
-      @themes_dir ||= "themes"
+      @themes_dir ||= "app/themes"
     end
     
     def themes_path
@@ -22,16 +22,16 @@ module ThemesForRails
     end
     
     def clear
-      @base_dir = nil
+      @base_dir   = nil
       @themes_dir = nil
     end
 
-    def use_sass?
-      @use_sass and sass_is_available?
-    end
+    #def use_sass?
+    #  @use_sass and sass_is_available?
+    #end
 
-    def sass_is_available?
-      !!defined?Sass::Plugin
-    end
+    #def sass_is_available?
+    #  !!defined?(Sass::Plugin)
+    #end
   end  
 end

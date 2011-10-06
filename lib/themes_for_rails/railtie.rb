@@ -10,7 +10,7 @@ module ThemesForRails
       end
       
       # Adding theme stylesheets path to sass, automatically. 
-      ThemesForRails.add_themes_path_to_sass if ThemesForRails.config.use_sass?
+      # ThemesForRails.add_themes_path_to_sass if ThemesForRails.config.use_sass?
       
     end
     
