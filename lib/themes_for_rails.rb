@@ -8,7 +8,6 @@ module ThemesForRails
   autoload :ControllerMethods, 'themes_for_rails/controller_methods'
   autoload :MailerMethods,     'themes_for_rails/mailer_methods'
   autoload :Railtie,           'themes_for_rails/railtie'
-  autoload :Routes,            'themes_for_rails/routes'
   autoload :Version,           'themes_for_rails/version'
 
   class << self
