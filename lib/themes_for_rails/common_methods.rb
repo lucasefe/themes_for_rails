@@ -36,6 +36,7 @@ module ThemesForRails
 
     # will add the view path for the current theme
     def add_theme_view_path
+      add_assets_path_for(self.theme_name)
       add_theme_view_path_for(self.theme_name)
     end
 
@@ -46,10 +47,10 @@ module ThemesForRails
 
     # Add paths for Sprockets
     def add_assets_path_for(name)
-      Rails::Application.config.assets.prefix = File.join(ThemesForRails.config.base_dir, ThemesForRails.config.themes_dir, name, 'assets')
+      assets_dir = File.join(ThemesForRails.config.base_dir, ThemesForRails.config.themes_dir, name, 'assets')
 
       [:stylesheets, :javascripts, :images].each do |asset_type|
-        Rails::Application.config.assets.paths << File.join(Rails::Application.config.assets.prefix, asset_type.to_s)
+        Rails.application.assets.append_path(File.join(assets_dir, asset_type.to_s))
       end
     end
 
