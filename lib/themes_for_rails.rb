@@ -19,7 +19,8 @@ module ThemesForRails
     end
     
     def available_themes(&block)
-      Dir.glob(File.join(config.themes_path, "*"), &block) 
+      #Dir.glob(File.join(config.themes_path, "*"), &block)
+      Dir.glob(File.join(config.themes_dir, "*"), &block)
     end
     
     alias each_theme_dir available_themes
