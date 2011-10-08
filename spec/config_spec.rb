@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe ThemesForRails::Config do
+describe "ThemesForRails::Config" do
   before :each do
     ThemesForRails.config.clear
   end
