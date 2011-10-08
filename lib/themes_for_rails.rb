@@ -6,7 +6,6 @@ module ThemesForRails
 
   autoload :Config
   autoload :CommonMethods
-  autoload :ViewHelpers
   autoload :ControllerMethods
   autoload :MailerMethods
   autoload :Railtie
