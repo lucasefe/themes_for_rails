@@ -34,16 +34,24 @@ module ThemesForRails
 
     # Add view path for current theme
     def add_theme_view_path
-      self.view_paths.insert 0, ActionView::FileSystemResolver.new("#{ThemesForRails.config.themes_dir}/#{self.theme_name}/views")
+      self.view_paths.insert 0, ActionView::FileSystemResolver.new(views_path_for(self.theme_name))
     end
 
     # Add assets path for current theme
     def add_theme_assets_path
-      assets_dir = File.join(Rails.root.to_s, ThemesForRails.config.themes_dir, self.theme_name, 'assets')
-
       [:stylesheets, :javascripts, :images].each do |asset_type|
-        Rails.application.assets.append_path(File.join(assets_dir, asset_type.to_s))
+        Rails.application.assets.append_path(assets_path_for(self.theme_name, asset_type.to_s))
       end
+    end
+
+    # Generate path for assets by theme name and asset type
+    def assets_path_for(theme_name, asset_type)
+      File.join(ThemesForRails.config.themes_dir, theme_name, 'assets', asset_type.to_s)
+    end
+
+    # Generate path for views by theme name
+    def views_path_for(theme_name)
+      File.join(ThemesForRails.config.themes_dir, theme_name, 'views')
     end
   end
 end
