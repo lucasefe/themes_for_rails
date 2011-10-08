@@ -1,10 +1,23 @@
-require "rspec"
+require "spec_helper"
 
-describe "My behaviour" do
+describe ThemesForRails::Config do
+  before :each do
+    ThemesForRails.config.clear
+  end
 
-  it "should do something" do
+  it "should change the base directory" do
+    ThemesForRails.config do |config|
+      config.base_dir = 'app/empty_themes'
+    end
 
-    #To change this template use File | Settings | File Templates.
-    true.should == false
+    ThemesForRails.available_theme_names.should be_empty
+  end
+
+  it 'should change the directory to views' do
+    ThemesForRails.config do |config|
+      config.themes_dir = 'app/themes'
+    end
+
+    ThemesForRails.available_theme_names.should == ['default']
   end
 end
