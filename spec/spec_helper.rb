@@ -8,7 +8,7 @@ require 'rails/all'
 $:.unshift File.expand_path('../../lib', __FILE__)
 
 require 'themes_for_rails'
-require "dummy_app/config/environment"
+require "dummy/config/environment"
 
 $:.unshift File.expand_path('../support', __FILE__)
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
