@@ -20,14 +20,11 @@ Gem::Specification.new do |s|
     "README.textile"
   ]
   
-  # specify any dependencies here; for example:
   s.add_runtime_dependency(%q<rails>, ["~> 3.1"])
   s.add_runtime_dependency(%q<themes_for_rails>, [">= 1.0"])
 
   s.add_development_dependency(%q<rails>, ["~> 3.1"])
   s.add_development_dependency(%q<sqlite3>, [">= 0"])
-  s.add_development_dependency(%q<test-unit>, [">= 0"])
+  s.add_development_dependency(%q<rspec>, [">= 0"])
   s.add_development_dependency(%q<rspec-rails>, [">= 0"])
-  s.add_development_dependency(%q<contest>, [">= 0"])
-  s.add_development_dependency(%q<mocha>, [">= 0"])
 end
