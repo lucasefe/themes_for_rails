@@ -16,6 +16,7 @@ module ThemesForRails
       @theme_name = name
     end
 
+    # This calls from ControllerMethods module
     def set_theme(name)
       self.theme_name = name
 

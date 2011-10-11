@@ -46,27 +46,33 @@ describe "ApplicationControllerInclusion" do
   end
 end
 
-describe "ThemesForRails::ControllerMethods" do
+describe ThemesForRails::ControllerMethods do
+  before(:each) do
+    @controller_class = MyController
+    @controller = MyController.new
+    @controller_class.send(:include, ThemesForRails::ControllerMethods)
+  end
+
   context "at class level" do
     it "should respond_to theme" do
-      ApplicationController.should respond_to(:theme)
+      @controller_class.should respond_to(:theme)
     end
 
     context "setting the theme with a String" do
       #tests MyController
 
-      describe MyController do
+      #describe MyController do
         #let(:controller) { MyController.new }  
 
-        #it "should set the selected theme for all actions" do
-        #  controller.theme 'default'
-        #  controller.any_instance.should_receive(:set_theme).with('default')
-        #  controller.theme_name.should == 'default'
-        #  get :hello
-        #end
+        it "should set the selected theme for all actions" do
+          @controller_class.theme 'default'
+          #@controller.should_receive(:set_theme).with('default')
+          @controller.theme_name.should == 'default'
+          #get :hello
+        end
 
-        pending "have troubles"
-      end
+        #pending "have troubles"
+      #end
     end
   end
 end
