@@ -2,6 +2,7 @@ require "spec_helper"
 require 'ruby-debug'
 
 class MyController < ActionController::Base
+  theme 'default'
   def hello
     render :text => "Just a test"
   end
@@ -52,7 +53,7 @@ describe ThemesForRails::ControllerMethods do
     ActionController::Base.send(:include, ThemesForRails::ControllerMethods)
     @controller_class = MyController
     @controller = MyController.new
-    #@controller_class.send(:include, ThemesForRails::ControllerMethods)
+    @controller_class.send(:include, ThemesForRails::ControllerMethods)
   end
 
   context "at class level" do
@@ -68,7 +69,7 @@ describe ThemesForRails::ControllerMethods do
 
         it "should set the selected theme for all actions" do
           #@controller_class.theme 'default'
-          @controller_class.send(:theme, 'default')
+          #@controller_class.send(:theme, 'default')
           #@controller.should_receive(:set_theme).with('default')
           #debugger
           @controller.theme_name.should == 'default'
