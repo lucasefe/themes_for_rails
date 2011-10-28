@@ -39,6 +39,7 @@ module ThemesForRails
     end
 
     # Add assets path for current theme
+    # TODO: What if we change theme dynamically with a method?
     def add_theme_assets_path
       @@theme_assets_path_cache ||= begin
         [:stylesheets, :javascripts, :images].each do |asset_type|
