@@ -3,7 +3,7 @@ module ThemesForRails
     def theme_name
       @cached_theme_name ||= begin
         case @theme_name
-        when Symbol then 
+        when Symbol then
           self.respond_to?(@theme_name, true) ? self.send(@theme_name) : @theme_name.to_s
         when String then @theme_name
         else
@@ -35,7 +35,7 @@ module ThemesForRails
 
     # Add view path for current theme
     def add_theme_view_path
-      self.view_paths.insert 0, ActionView::FileSystemResolver.new(views_path_for(self.theme_name))
+      append_view_path ActionView::FileSystemResolver.new(views_path_for(self.theme_name))
     end
 
     # Add assets path for current theme
