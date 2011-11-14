@@ -30,3 +30,4 @@ module ThemesForRails
 end
 
 require 'themes_for_rails/controller_methods'
+require 'themes_for_rails/mailer_methods'

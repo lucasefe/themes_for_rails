@@ -23,5 +23,4 @@ module ThemesForRails
 end
 
 ActiveSupport.on_load(:action_controller) { include ThemesForRails::ControllerMethods }
-ActiveSupport.on_load(:action_mailer)     { include ThemesForRails::ControllerMethods }
 
