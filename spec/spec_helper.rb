@@ -4,6 +4,7 @@ ENV["RAILS_ENV"] = "test"
 require 'rubygems'
 require 'bundler/setup'
 require 'rails/all'
+require 'rspec/rails'
 
 $:.unshift File.expand_path('../../lib', __FILE__)
 

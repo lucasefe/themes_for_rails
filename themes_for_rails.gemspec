@@ -27,5 +27,4 @@ Gem::Specification.new do |s|
   s.add_development_dependency(%q<sqlite3>, [">= 0"])
   s.add_development_dependency(%q<rspec>, [">= 0"])
   s.add_development_dependency(%q<rspec-rails>, [">= 0"])
-  s.add_development_dependency(%q<ruby-debug19>, [">= 0"])
 end
