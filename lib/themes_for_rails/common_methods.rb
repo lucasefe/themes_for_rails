@@ -45,5 +45,14 @@ module ThemesForRails
     def views_path_for(theme_name)
       File.join(ThemesForRails.config.themes_dir, theme_name, 'views')
     end
+    
+    def add_theme_assets_path
+      @@theme_assets_path_cache ||= begin
+        [:stylesheets, :javascripts, :images].each do |asset_type|
+          Rails.application.assets.prepend_path(assets_path_for(self.theme_name, asset_type.to_s))
+        end
+        true
+      end
+    end
   end
 end
