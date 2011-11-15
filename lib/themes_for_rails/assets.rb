@@ -1,6 +1,6 @@
 require 'sprockets'
 
-class ThemesForRails::SprocketsEnvironment < Sprockets::Environment
+class ThemesForRails::Assets< Sprockets::Environment
   
   THEME_REGEX_MATCHER = /themes\/([a-zA-Z-_]*)\/assets\/(.*)/
 

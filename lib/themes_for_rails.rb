@@ -8,9 +8,7 @@ module ThemesForRails
   autoload :ControllerMethods
   autoload :MailerMethods
   autoload :Railtie
-  autoload :SprocketRoutes
   autoload :Version
-  autoload :SprocketEnvironment
 
   class << self
     def config
@@ -31,6 +29,6 @@ module ThemesForRails
   end
 end
 
-require 'themes_for_rails/sprockets_routes'
+require 'themes_for_rails/routes'
 require 'themes_for_rails/controller_methods'
 require 'themes_for_rails/mailer_methods'
