@@ -1,5 +1,6 @@
 module ThemesForRails
   class Railtie < ::Rails::Railtie
+
     config.themes_for_rails = ActiveSupport::OrderedOptions.new
 
     config.to_prepare do
@@ -7,5 +8,6 @@ module ThemesForRails
         ThemesForRails.config.send "#{key}=".to_sym, value
       end
     end
+
   end
 end

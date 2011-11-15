@@ -22,11 +22,15 @@ module ThemesForRails
 
       if valid_theme?
         add_theme_view_path
-        add_theme_assets_path
       end
     end
 
   protected
+
+    # Generate path for assets by theme name and asset type
+    def assets_path_for(theme_name, asset_type)
+      File.join(ThemesForRails.config.themes_dir, theme_name, 'assets', asset_type.to_s)
+    end
 
     # Check theme is valid
     def valid_theme?
@@ -38,24 +42,6 @@ module ThemesForRails
       prepend_view_path(ActionView::FileSystemResolver.new(views_path_for(self.theme_name)))
     end
 
-    # Add assets path for current theme
-    # TODO: What if we change theme dynamically with a method?
-    def add_theme_assets_path
-      @@theme_assets_path_cache ||= begin
-        [:stylesheets, :javascripts, :images].each do |asset_type|
-          Rails.application.assets.append_path(assets_path_for(self.theme_name, asset_type.to_s))
-        end
-
-        true
-      end
-    end
-
-    # Generate path for assets by theme name and asset type
-    def assets_path_for(theme_name, asset_type)
-      File.join(ThemesForRails.config.themes_dir, theme_name, 'assets', asset_type.to_s)
-    end
-
-    # Generate path for views by theme name
     def views_path_for(theme_name)
       File.join(ThemesForRails.config.themes_dir, theme_name, 'views')
     end
