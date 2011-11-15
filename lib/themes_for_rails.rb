@@ -2,11 +2,8 @@ require 'themes_for_rails/railtie'
 
 module ThemesForRails
   extend ActiveSupport::Autoload
-
   autoload :Config
   autoload :CommonMethods
-  autoload :ControllerMethods
-  autoload :MailerMethods
   autoload :Railtie
   autoload :Version
 
@@ -32,3 +29,4 @@ end
 require 'themes_for_rails/routes'
 require 'themes_for_rails/controller_methods'
 require 'themes_for_rails/mailer_methods'
+require 'themes_for_rails/view_helpers'

@@ -19,7 +19,7 @@ class ThemesForRails::Assets< Sprockets::Environment
   def add_theme_assets_path
     @@theme_assets_path_cache ||= begin
       [:stylesheets, :javascripts, :images].each do |asset_type|
-        append_path(assets_path_for(self.theme_name, asset_type.to_s))
+        prepend_path(assets_path_for(self.theme_name, asset_type.to_s))
       end
       true
     end
