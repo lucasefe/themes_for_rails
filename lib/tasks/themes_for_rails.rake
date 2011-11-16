@@ -3,7 +3,7 @@ namespace :themes do
   task :create_cache => :environment do
     for theme in ThemesForRails.available_themes
       theme_name = File.basename(theme)
-      theme_dir = ThemesForRails.config.themes_dir
+      theme_dir = ThemesForRails.config.themes_path
       theme_base = "#{Rails.public_path}/#{theme_dir}/#{theme_name}"
       puts "Creating #{theme_base}"
 
@@ -13,7 +13,7 @@ namespace :themes do
   end
   desc "Removes the cached (public) theme folders"
   task :remove_cache => :environment do
-    theme_dir = ThemesForRails.config.themes_dir
+    theme_dir = ThemesForRails.config.themes_path
     puts "Removing #{Rails.public_path}/#{theme_dir}"
     FileUtils.rm_r "#{Rails.public_path}/#{theme_dir}", :force => true
   end

@@ -1,5 +1,8 @@
 module ThemesForRails
   class Config
+
+    attr_writer :base_dir
+
     def initialize(&block)
       yield if block_given?
     end
@@ -8,12 +11,20 @@ module ThemesForRails
       Rails.application.assets
     end
 
-    def themes_dir=(path)
-      @themes_dir = File.join(Rails.root, path)
+    def base_dir
+      @base_dir ||= Rails.root
     end
-    
+
+    def themes_dir=(path)
+      @themes_dir = path
+    end
+
     def themes_dir
-      @themes_dir ||= File.join(Rails.root, "app/themes")
+      @themes_dir ||= "app/themes"
+    end
+
+    def themes_path
+      File.join(base_dir, themes_dir)
     end
 
     def clear

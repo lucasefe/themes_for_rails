@@ -16,6 +16,10 @@ describe ThemesForRails::ViewHelpers do
     end.new(config)
   end
 
+  before(:each) do
+    Rails.application.config.assets.enabled = true
+  end
+
   it "should provide path helpers for common asset formats" do
     helper.theme_image_path('logo.png', 'pink').should == "/themes/pink/assets/logo.png"
     helper.theme_stylesheet_path('app.css', 'pink').should == "/themes/pink/assets/app.css"

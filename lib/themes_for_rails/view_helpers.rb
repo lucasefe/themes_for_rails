@@ -11,16 +11,58 @@ module ThemesForRails
       def current_theme_asset_path(asset)
         theme_asset_path(asset, self.theme_name)
       end
-      alias_method :current_theme_javascript_path, :current_theme_asset_path
-      alias_method :current_theme_stylesheet_path, :current_theme_asset_path
-      alias_method :current_theme_image_path,      :current_theme_asset_path
 
       def theme_asset_path(asset, new_theme_name = self.theme_name, options = {})
         asset_path("/themes/#{new_theme_name}/assets/#{asset}", options)
       end
-      alias_method :theme_image_path, :theme_asset_path
-      alias_method :theme_javascript_path, :theme_asset_path
-      alias_method :theme_stylesheet_path, :theme_asset_path
+
+      def current_theme_stylesheet_path(asset)
+        if Rails.application.config.assets.enabled
+          current_theme_asset_path(asset)
+        else
+          base_theme_stylesheet_path(:theme => self.theme_name, :asset => "#{asset}.css")
+        end
+      end
+
+      def current_theme_javascript_path(asset)
+        if Rails.application.config.assets.enabled
+          current_theme_asset_path(asset)
+        else
+          base_theme_stylesheet_path(:theme => self.theme_name, :asset => "#{asset}.css")
+        end
+      end
+
+      def current_theme_image_path(asset)
+        if Rails.application.config.assets.enabled
+          current_theme_asset_path(asset)
+        else
+          base_theme_image_path(:theme => self.theme_name, :asset => asset)
+        end
+      end
+
+      def theme_stylesheet_path(asset, new_theme_name = self.theme_name)
+        if Rails.application.config.assets.enabled
+          theme_asset_path(asset, new_theme_name)
+        else
+          base_theme_stylesheet_path(:theme => new_theme_name, :asset => "#{asset}.css")
+        end
+      end
+
+      def theme_javascript_path(asset, new_theme_name = self.theme_name)
+        if Rails.application.config.assets.enabled
+          theme_asset_path(asset, new_theme_name)
+        else
+          base_theme_javascript_path(:theme => new_theme_name, :asset => "#{asset}.js")
+        end
+      end
+
+      def theme_image_path(asset, new_theme_name = self.theme_name)
+        if Rails.application.config.assets.enabled
+          theme_asset_path(asset, new_theme_name)
+        else
+          base_theme_image_path(:theme => new_theme_name, :asset => asset)
+        end
+      end
 
       def current_theme_image_tag(source, options = {})
         image_tag(current_theme_image_path(source), options)
