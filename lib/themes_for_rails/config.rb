@@ -4,6 +4,10 @@ module ThemesForRails
       yield if block_given?
     end
 
+    def assets_finder
+      Rails.application.assets
+    end
+
     def themes_dir=(path)
       @themes_dir = File.join(Rails.root, path)
     end

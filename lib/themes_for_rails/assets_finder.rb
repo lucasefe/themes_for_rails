@@ -1,6 +1,9 @@
 require 'sprockets'
 
-class ThemesForRails::Assets < Sprockets::Environment
+# Extends Sprockets::Environment functionality in order
+# to support theming
+
+module ThemesForRails::AssetsFinder
   
   THEME_REGEX_MATCHER = /themes\/([a-zA-Z\-_]*)\/assets\/(.*)/
 
@@ -9,11 +12,15 @@ class ThemesForRails::Assets < Sprockets::Environment
   def find_asset(path, options = {})
     Rails.logger.debug "[TFR] Adding Theme Path to Sprockets Path list. "
     _, theme, asset_name = *THEME_REGEX_MATCHER.match(path)
-    raise "[TFR] Path: #{path} is invalid" if theme.nil?
-    Rails.logger.debug "[TFR] Selected Theme: #{theme}"
-    self.theme_name =theme
-    add_theme_assets_path
-    super(asset_name, options ={})
+
+    unless theme.nil?
+      Rails.logger.debug "[TFR] Selected Theme: #{theme}"
+      self.theme_name = theme
+      add_theme_assets_path
+      super(asset_name, options)
+    else
+      super
+    end
   end
 
   def add_theme_assets_path
