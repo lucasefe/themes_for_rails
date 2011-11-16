@@ -2,19 +2,17 @@
 require File.dirname(__FILE__) + "/lib/themes_for_rails/version.rb"
 
 require 'rake'
-require 'rake/testtask'
-require 'rake/rdoctask'
+require 'rspec/core'
+require 'rspec/core/rake_task'
 
-desc 'Default: run tests for all ORMs.'
-task :default => :test
+desc 'Default: run rspec for all'
+task :default => :spec
 
-desc 'Run unit tests.'
-Rake::TestTask.new(:test) do |t|
-  t.libs << 'lib'
-  t.libs << 'test'
-  t.pattern = 'test/**/*_test.rb'
-  t.verbose = true
+desc "Run the code examples"
+RSpec::Core::RakeTask.new(:spec ) do |t|
+  t.pattern = "./spec/**/*_spec.rb"
 end
+
 
 begin
   require 'jeweler'
@@ -26,7 +24,7 @@ begin
     gemspec.homepage = "http://github.com/lucasefe/themes_for_rails"
     gemspec.authors = ["Lucas Florio"]
     gemspec.version = ThemesForRails::VERSION
-    gemspec.add_dependency "rails", "> 3.0.0"
+    gemspec.add_dependency "rails", "~> 3.1.0"
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: gem install jeweler"

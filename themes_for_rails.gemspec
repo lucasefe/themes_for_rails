@@ -105,6 +105,7 @@ Gem::Specification.new do |s|
     "spec/lib/view_helpers_spec.rb",
     "spec/mailers/mailer_methods_spec.rb",
     "spec/spec_helper.rb",
+    "test/dummy_app/Gemfile.lock",
     "test/dummy_app/log/development.log",
     "test/dummy_app/log/test.log",
     "themes_for_rails.gemspec"
@@ -123,21 +124,22 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<sqlite3>, [">= 0"])
       s.add_development_dependency(%q<rspec>, [">= 0"])
       s.add_development_dependency(%q<rspec-rails>, [">= 0"])
+      s.add_runtime_dependency(%q<rails>, ["~> 3.1.0"])
     else
       s.add_dependency(%q<themes_for_rails>, [">= 0"])
       s.add_dependency(%q<rails>, ["~> 3.1"])
       s.add_dependency(%q<sqlite3>, [">= 0"])
       s.add_dependency(%q<rspec>, [">= 0"])
-      s.add_dependency(%q<rspec-rails>, [">= 2.0.0.beta.20"])
+      s.add_dependency(%q<rspec-rails>, [">= 0"])
+      s.add_dependency(%q<rails>, ["~> 3.1.0"])
     end
   else
     s.add_dependency(%q<themes_for_rails>, [">= 0"])
     s.add_dependency(%q<rails>, ["~> 3.1"])
     s.add_dependency(%q<sqlite3>, [">= 0"])
-    s.add_dependency(%q<rspec-rails>, [">= 2.0.0.beta.20"])
-    s.add_dependency(%q<jeweler>, [">= 0"])
-    s.add_dependency(%q<contest>, [">= 0"])
-    s.add_dependency(%q<mocha>, [">= 0"])
+    s.add_dependency(%q<rspec>, [">= 0"])
+    s.add_dependency(%q<rspec-rails>, [">= 0"])
+    s.add_dependency(%q<rails>, ["~> 3.1.0"])
   end
 end
 

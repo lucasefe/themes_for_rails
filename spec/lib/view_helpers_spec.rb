@@ -3,11 +3,17 @@ require 'spec_helper'
 describe ThemesForRails::ViewHelpers do
 
   let(:helper) do 
-    Class.new do
+    config = stub({:perform_caching => false, 
+      :asset_path => "/assets", 
+      :relative_url_root => nil,
+      :default_asset_host_protocol => nil,  
+      :asset_host => ''})
+
+    Class.new(ActionView::AssetPaths) do
       attr_accessor :theme_name
       include ThemesForRails::ViewHelpers
-      include Sprockets::Helpers::RailsHelper
-    end.new
+      include Sprockets::Helpers::RailsHelper      
+    end.new(config)
   end
 
   it "should provide path helpers for common asset formats" do

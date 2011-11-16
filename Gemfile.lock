@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     themes_for_rails (1.0.0rc1)
+      rails (~> 3.1.0)
       themes_for_rails
 
 GEM
