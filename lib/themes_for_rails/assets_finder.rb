@@ -8,14 +8,16 @@ module ThemesForRails::AssetsFinder
   THEME_REGEX_MATCHER = /themes\/([a-zA-Z\-_]*)\/assets\/(.*)/
 
   include ThemesForRails::CommonMethods
+  include ThemesForRails::Logging
 
   def find_asset(path, options = {})
-    Rails.logger.debug "[TFR] Adding Theme Path to Sprockets Path list. "
     _, theme, asset_name = *THEME_REGEX_MATCHER.match(path)
 
     unless theme.nil?
-      Rails.logger.debug "[TFR] Selected Theme: #{theme}"
+      log "Asset Name: #{asset_name}"
+      log "Selected Theme: #{theme}"
       self.theme_name = theme
+      log "Adding Theme Path to Sprockets Path list. "
       add_theme_assets_path
       super(asset_name, options)
     else

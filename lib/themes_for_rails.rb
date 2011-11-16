@@ -6,6 +6,7 @@ module ThemesForRails
   autoload :CommonMethods
   autoload :Railtie
   autoload :Version
+  autoload :Logging
 
   class << self
     def config
