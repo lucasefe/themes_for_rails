@@ -1,12 +1,9 @@
 module ThemesForRails
   module CommonMethods
-    def view_path_for(theme)
-      File.join(theme_path_for(theme), "views")
-    end
     def theme_name
       @cached_theme_name ||= begin
         case @theme_name
-        when Symbol then 
+        when Symbol then
           self.respond_to?(@theme_name, true) ? self.send(@theme_name) : @theme_name.to_s
         when String then @theme_name
         else
@@ -14,35 +11,48 @@ module ThemesForRails
         end
       end
     end
+
     def theme_name=(name)
       @theme_name = name
     end
+
+    # This calls from ControllerMethods module
     def set_theme(name)
       self.theme_name = name
+
       if valid_theme?
         add_theme_view_path
       end
     end
-  public
+
+  protected
+
+    # Generate path for assets by theme name and asset type
+    def assets_path_for(theme_name, asset_type)
+      File.join(ThemesForRails.config.themes_dir, theme_name, 'assets', asset_type.to_s)
+    end
+
+    # Check theme is valid
     def valid_theme?
       !self.theme_name.nil?
     end
-    # will add the view path for the current theme
+
+    # Add view path for current theme
     def add_theme_view_path
-      add_theme_view_path_for(self.theme_name)
+      prepend_view_path(ActionView::FileSystemResolver.new(views_path_for(self.theme_name)))
     end
-    # will add the view path for a given theme name
-    def add_theme_view_path_for(name)
-      self.view_paths.insert 0, ActionView::FileSystemResolver.new(view_path_for(name))
+
+    def views_path_for(theme_name)
+      File.join(ThemesForRails.config.themes_dir, theme_name, 'views')
     end
-    def public_theme_path
-      theme_path("/")
-    end
-    def theme_path(base = ThemesForRails.config.base_dir)
-      theme_path_for(theme_name, base)
-    end
-    def theme_path_for(name, base = ThemesForRails.config.base_dir, theme_dir = ThemesForRails.config.themes_dir)
-      File.join(base, theme_dir, name)
+    
+    def add_theme_assets_path
+      @@theme_assets_path_cache ||= begin
+        [:stylesheets, :javascripts, :images].each do |asset_type|
+          Rails.application.assets.prepend_path(assets_path_for(self.theme_name, asset_type.to_s))
+        end
+        true
+      end
     end
   end
 end

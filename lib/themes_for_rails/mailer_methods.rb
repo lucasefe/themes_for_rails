@@ -3,6 +3,7 @@ module ThemesForRails
     extend ActiveSupport::Concern
 
     included do
+      include ThemesForRails::ControllerMethods
       alias_method_chain :mail, :theme
     end
 

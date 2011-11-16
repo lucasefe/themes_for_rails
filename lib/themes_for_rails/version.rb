@@ -1,3 +1,3 @@
 module ThemesForRails
-  VERSION = "0.5.0.beta"
+  VERSION = "1.0.0rc1"
 end

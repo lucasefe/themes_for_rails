@@ -1,3 +1,0 @@
-- Allow to change the way the view path is added. Before or after. 
-
-- Research how to integrate SASS to this scheme. 

@@ -1,14 +1,29 @@
 module ThemesForRails
   module Generators
     class InstallGenerator < Rails::Generators::Base
-      desc "Creates a ThemeForRails basic structure."
+      source_root File.expand_path("../templates", __FILE__)
+      desc "Creates a ThemeForRails themes folder with default theme inside."
 
       def create_themes_folder
-        empty_directory(ThemesForRails.config.themes_path)
-      end
-      
-      def add_themes_for_rails_routes
-        route "themes_for_rails"
+        empty_directory ThemesForRails.config.themes_dir
+        create_file "#{ThemesForRails.config.themes_dir}/.gitkeep", ""
+        inject_into_class "app/controllers/application_controller.rb", ApplicationController do
+          "  theme 'default'\n"
+        end
+
+        if yes?("\nMove all your views and assets to #{ThemesForRails.config.themes_dir}/default (y/n)?")
+          # Create empty directory for default themes
+          default_theme_dir = "#{ThemesForRails.config.themes_dir}/default"
+          empty_directory default_theme_dir
+
+          # TODO: need check for git (or git repo?). If git available, move with git mv command
+          run "mv ./app/views/ #{default_theme_dir}"
+          run "mv ./app/assets/ #{default_theme_dir}"
+        else
+          generate 'themes_for_rails:theme default'
+        end
+
+        readme 'README'
       end
       
     end
