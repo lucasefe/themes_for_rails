@@ -1,5 +1,9 @@
 module ThemesForRails
   module CommonMethods
+    def view_path_for(theme)
+      File.join(theme_path_for(theme), "views")
+    end
+
     def theme_name
       @cached_theme_name ||= begin
         case @theme_name
@@ -29,7 +33,7 @@ module ThemesForRails
 
     # Generate path for assets by theme name and asset type
     def assets_path_for(theme_name, asset_type)
-      File.join(ThemesForRails.config.themes_dir, theme_name, 'assets', asset_type.to_s)
+      File.join(ThemesForRails.config.themes_path, theme_name, 'assets', asset_type.to_s)
     end
 
     # Check theme is valid
@@ -39,11 +43,27 @@ module ThemesForRails
 
     # Add view path for current theme
     def add_theme_view_path
-      prepend_view_path(ActionView::FileSystemResolver.new(views_path_for(self.theme_name)))
+      if Rails.application.config.assets.enabled
+        prepend_view_path(ActionView::FileSystemResolver.new(views_path_for(self.theme_name)))
+      else
+        add_theme_view_path_for(self.theme_name)
+      end
+    end
+
+    def add_theme_view_path_for(name)
+      self.view_paths.insert 0, ActionView::FileSystemResolver.new(view_path_for(name))
     end
 
     def views_path_for(theme_name)
-      File.join(ThemesForRails.config.themes_dir, theme_name, 'views')
+      File.join(ThemesForRails.config.themes_path, theme_name, 'views')
+    end
+
+    def theme_path(base = ThemesForRails.config.base_dir)
+      theme_path_for(theme_name, base)
+    end
+
+    def theme_path_for(name, base = ThemesForRails.config.base_dir, theme_dir = ThemesForRails.config.themes_dir)
+      File.join(base, theme_dir, name)
     end
     
     def add_theme_assets_path

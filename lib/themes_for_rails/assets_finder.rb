@@ -36,7 +36,7 @@ module ThemesForRails::AssetsFinder
 
   # Generate path for assets by theme name and asset type
   def assets_path_for(theme_name, asset_type)
-    File.join(ThemesForRails.config.themes_dir, theme_name, 'assets', asset_type.to_s)
+    File.join(ThemesForRails.config.themes_path, theme_name, 'assets', asset_type.to_s)
   end
 
 end
