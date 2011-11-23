@@ -1,0 +1,26 @@
+- Setup
+
+Add themes_for_rails to your Gemfile.
+
+gem 'themes_for_rails'
+
+Add themes_for_rails to your config/routes.rb
+
+Then follow the instructions provided in the README file. 
+
+- Accomplishments
+
+I've accomplished several things:
+
+* I got the chance to know a lot about the Raisl 3 public API. I have worked a lot on hooking the themes support cleanly, and not using monkey patching. 
+
+* I also learned about testing with the minimal. In this project I am not using rspec, but test_unit, so this was different from what I was used to. 
+
+* This time, I build the library step by step, one part at a time, which was pretty different from what I did with the twitter lib. Progressively built. I required to do design first and then coding. Leasson learned. 
+
+* Finally, coding style. Use vertical spaces. 
+
+---NOTE---
+
+More information reading the specs, or the README. 
+

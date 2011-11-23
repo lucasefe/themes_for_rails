@@ -1,6 +1,36 @@
+  Processing by ThemesForRails::AssetsController#images as HTML
+  Parameters: {"theme"=>"default", "asset"=>"i_am_not_here.jpg"}
+Rendered text template (0.0ms)
+Completed 404 Not Found in 8ms (Views: 7.8ms | ActiveRecord: 0.0ms)
+  Processing by ThemesForRails::AssetsController#javascripts as HTML
+  Parameters: {"theme"=>"default", "asset"=>"oldapp.js"}
+Completed 404 Not Found in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+  Processing by ThemesForRails::AssetsController#stylesheets as HTML
+  Parameters: {"theme"=>"default", "asset"=>"oldstyle.css"}
+Completed 404 Not Found in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+  Processing by ThemesForRails::AssetsController#images as HTML
+  Parameters: {"theme"=>"default", "asset"=>"nested/logo.png"}
+Sent file /Users/lucasefe/Programming/plugins/themes_for_rails/test/dummy_app/themes/default/images/nested/logo.png (0.1ms)
+Completed 200 OK in 0ms
+  Processing by ThemesForRails::AssetsController#stylesheets as HTML
+  Parameters: {"theme"=>"default", "asset"=>"images/logo.png"}
+Sent file /Users/lucasefe/Programming/plugins/themes_for_rails/test/dummy_app/themes/default/stylesheets/images/logo.png (0.1ms)
+Completed 200 OK in 0ms
+  Processing by ThemesForRails::AssetsController#images as HTML
+  Parameters: {"theme"=>"default", "asset"=>"logo.png"}
+Sent file /Users/lucasefe/Programming/plugins/themes_for_rails/test/dummy_app/themes/default/images/logo.png (0.1ms)
+Completed 200 OK in 0ms
+  Processing by ThemesForRails::AssetsController#javascripts as HTML
+  Parameters: {"theme"=>"default", "asset"=>"app.js"}
+Sent file /Users/lucasefe/Programming/plugins/themes_for_rails/test/dummy_app/themes/default/javascripts/app.js (0.0ms)
+Completed 200 OK in 0ms
+  Processing by ThemesForRails::AssetsController#stylesheets as HTML
+  Parameters: {"theme"=>"default", "asset"=>"style.css"}
+Sent file /Users/lucasefe/Programming/plugins/themes_for_rails/test/dummy_app/themes/default/stylesheets/style.css (0.0ms)
+Completed 200 OK in 0ms
   Processing by MyController#hello as HTML
-Completed 200 OK in 6ms (Views: 5.9ms | ActiveRecord: 0.0ms)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms)
   Processing by CustomThemeController#hello as HTML
-Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.0ms)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms)
   Processing by PrivateCustomThemeController#hello as HTML
-Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms)

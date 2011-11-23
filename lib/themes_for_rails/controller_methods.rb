@@ -1,11 +1,10 @@
 module ThemesForRails
   module ControllerMethods
     extend ActiveSupport::Concern
-
     included do
       include ThemesForRails::CommonMethods
+      include ThemesForRails::UrlHelpers
     end
-
     module ClassMethods
       def theme(name, options = {})
         before_filter(options) do |controller|
@@ -13,7 +12,6 @@ module ThemesForRails
         end
       end
     end
-
     module InstanceMethods
       def theme(name)
         set_theme(name)
@@ -23,4 +21,6 @@ module ThemesForRails
 end
 
 ActiveSupport.on_load(:action_controller) { include ThemesForRails::ControllerMethods }
+
+ActiveSupport.on_load(:action_mailer) { include ThemesForRails::ControllerMethods }
 
