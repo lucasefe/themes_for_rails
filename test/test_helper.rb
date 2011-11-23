@@ -7,7 +7,4 @@ require "rails/test_help"
 require 'mocha'
 
 $:.unshift File.expand_path('../support', __FILE__)
-Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| 
-  require f
-  
-}
+Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
