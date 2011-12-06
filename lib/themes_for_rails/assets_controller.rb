@@ -21,18 +21,18 @@ module ThemesForRails
   private
     
     def handle_asset(asset, theme, prefix)
-      find_asset(asset, theme, prefix) do |path, mime_type|
+      find_themed_asset(asset, theme, prefix) do |path, mime_type|
         send_file path, :type => mime_type, :disposition => "inline"
       end
     end
     
-    def find_asset(asset_name, asset_theme, asset_prefix)
+    def find_themed_asset(asset_name, asset_theme, asset_prefix, &block)
       path = asset_path(asset_name, asset_theme, asset_prefix)
       if File.exists?(path)
         yield path, mime_type_for(request)
       elsif File.extname(path).blank?
         asset_name = "#{asset_name}.#{extension_from(request.path_info)}"
-        return find_asset(asset_name, asset_theme, asset_prefix) 
+        return find_themed_asset(asset_name, asset_theme, asset_prefix, &block) 
       else
         render_not_found
       end
