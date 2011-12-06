@@ -119,7 +119,6 @@ Gem::Specification.new do |s|
     test/dummy_app/db/seeds.rb
     test/dummy_app/empty_themes/.gitkeep
     test/dummy_app/lib/tasks/.gitkeep
-    test/dummy_app/log/test.log
     test/dummy_app/public/404.html
     test/dummy_app/public/422.html
     test/dummy_app/public/500.html
