@@ -2,7 +2,6 @@ PATH
   remote: .
   specs:
     themes_for_rails (0.4.3)
-      rails (= 3.0.11)
       rails (>= 3.0.0)
 
 GEM
@@ -86,6 +85,7 @@ PLATFORMS
 DEPENDENCIES
   contest
   mocha
+  rails (= 3.0.11)
   sqlite3
   test-unit
   themes_for_rails!
