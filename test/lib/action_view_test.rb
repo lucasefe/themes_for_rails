@@ -7,7 +7,7 @@ class ViewHelpersTest < ::ActionController::IntegrationTest
   include ::ActionView::Helpers::AssetTagHelper
   include ::ERB::Util
   include ::ActionView::Helpers::TagHelper    
-
+  include ::ActionView::Helpers::FormTagHelper 
   def theme_name
     'default'
   end
@@ -45,6 +45,10 @@ module ThemesForRails
     end
     should 'delegate options in image_tag' do
       assert_match /width=.40/, theme_image_tag('image.css', :size => '40x50')
+    end
+
+    should 'delegate options in image_submit_tag' do
+      assert_match /class=.search_button/, theme_image_submit_tag('image.png', :class => 'search_button')
     end
   end
 end
