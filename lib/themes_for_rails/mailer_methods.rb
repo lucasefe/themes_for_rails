@@ -6,14 +6,11 @@ module ThemesForRails
       alias_method_chain :mail, :theme
     end
 
-    module InstanceMethods
+    def mail_with_theme(headers = {}, &block)
+      theme_opts = headers[:theme] || self.class.default[:theme]
+      theme(theme_opts) if theme_opts
 
-      def mail_with_theme(headers = {}, &block)
-        theme_opts = headers[:theme] || self.class.default[:theme]
-        theme(theme_opts) if theme_opts
-
-        mail_without_theme(headers, &block)
-      end
+      mail_without_theme(headers, &block)
     end
   end
 end

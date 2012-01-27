@@ -12,10 +12,8 @@ module ThemesForRails
         end
       end
     end
-    module InstanceMethods
-      def theme(name)
-        set_theme(name)
-      end
+    def theme(name)
+      set_theme(name)
     end
   end
 end
