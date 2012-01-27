@@ -35,6 +35,15 @@ module ThemesForRails
       assert_equal "/themes/some.theme/images/logo.png", theme_image_path('logo.png', "some.theme")
       
     end
+
+    should "provide path helpers for a given theme name with different assets_prefix" do
+      ThemesForRails.config.assets_prefix = "assets"
+      assert_equal "/themes/sometheme/assets/stylesheets/style.css", theme_stylesheet_path('style', "sometheme")
+      assert_equal "/themes/sometheme/assets/javascripts/app.js", theme_javascript_path('app', "sometheme")
+      assert_equal "/themes/sometheme/assets/images/logo.png", theme_image_path('logo.png', "sometheme")
+      ThemesForRails.config.assets_prefix = ""
+
+    end
     
     should 'delegate to stylesheet_link_tag' do
       assert_match /media=.screen/, theme_stylesheet_link_tag('cuac.css')

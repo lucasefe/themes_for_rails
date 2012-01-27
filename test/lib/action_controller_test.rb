@@ -165,6 +165,29 @@ module ThemesForRails
         
       end
 
+      context "different assets_prefix" do
+        
+        setup do 
+          ThemesForRails.config.assets_prefix = "assets"
+        end
+        
+        teardown do
+          ThemesForRails.config.assets_prefix = nil
+        end
+
+        tests ApplicationController
+
+        should "provide url method to access a given stylesheet file in the current theme" do
+          @controller.theme 'default'
+          assert_equal @controller.send(:current_theme_stylesheet_path, "style.compact"), "/themes/default/assets/stylesheets/style.compact.css"
+        end
+        
+        should "provide url method to access a given javascript file in the current theme" do
+          @controller.theme 'default'
+          assert_equal @controller.send(:current_theme_javascript_path, "app.min"), "/themes/default/assets/javascripts/app.min.js"
+        end
+        
+      end
     end
   end
 end

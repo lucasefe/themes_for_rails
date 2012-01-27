@@ -18,6 +18,16 @@ class ThemesForRailsTest < Test::Unit::TestCase
     
     assert_equal ['another_default'], ThemesForRails.available_theme_names
   end
+
+  should 'provide an empty assets_prefix by default' do
+    assert_equal nil, ThemesForRails.config.assets_prefix
+  end
+
+  should 'support an optional assets_prefix' do
+    assert_equal nil, ThemesForRails.config.assets_prefix
+    ThemesForRails.config.assets_prefix = "assets"
+    assert_equal "assets", ThemesForRails.config.assets_prefix
+  end
   
   teardown do
     ThemesForRails.config.clear
