@@ -1,3 +1,4 @@
+# encoding: utf-8
 require File.expand_path("test/test_helper.rb")
 
 THEME = 'pink'
@@ -15,7 +16,7 @@ class Notifier < ActionMailer::Base
 end
 
 module ThemesForRails
-  class MailerMethodsTest < ActionController::TestCase
+  class ActionMailerTest < ::ActionController::TestCase
 
     should "set theme using mail headers" do
       Notifier.any_instance.expects(:theme).with("purple")

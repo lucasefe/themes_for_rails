@@ -1,7 +1,8 @@
+# encoding: utf-8
 require "test_helper"
 
 module ThemesForRails
-  class AssetsControllerTest < ActionController::TestCase  
+  class AssetsControllerTest < ::ActionController::TestCase  
     tests ThemesForRails::AssetsController
     should "respond to stylesheets" do
       assert @controller.respond_to?(:stylesheets)

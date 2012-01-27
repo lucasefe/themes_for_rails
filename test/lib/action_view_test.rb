@@ -1,21 +1,25 @@
+# encoding: utf-8
 require "test_helper"
 
+class ViewHelpersTest < ::ActionController::IntegrationTest
+  
+  include ::ThemesForRails::ActionView
+  include ::ActionView::Helpers::AssetTagHelper
+  include ::ERB::Util
+  include ::ActionView::Helpers::TagHelper    
+
+  def theme_name
+    'default'
+  end
+
+  def config
+    @config ||= stub({:perform_caching => false, :asset_path => "/assets", :asset_host => ''})
+  end
+end
+
 module ThemesForRails
-  class ViewHelpersTest < ActionController::IntegrationTest
-    include ThemesForRails::ViewHelpers
-
-    include ActionView::Helpers::AssetTagHelper
-    include ERB::Util
-    include ActionView::Helpers::TagHelper
-
-    def theme_name
-      'default'
-    end
-
-    def config
-      @config ||= stub({:perform_caching => false, :asset_path => "/assets", :asset_host => ''})
-    end
-
+  class CommonViewHelpersTest < ViewHelpersTest
+    
     should "provide path helpers for a given theme name" do
       
       assert_equal "/themes/sometheme/stylesheets/style.css", theme_stylesheet_path('style', "sometheme")

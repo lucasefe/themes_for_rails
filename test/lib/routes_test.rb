@@ -1,7 +1,8 @@
+# encoding: utf-8
 require "test_helper"
 
 module ThemesForRails
-  class RoutingTest < ActionController::TestCase  
+  class RoutingTest < ::ActionController::TestCase  
     should "recognize stylesheets route" do
       assert_generates('/themes/default/stylesheets/app.css', { 
         :controller => 'themes_for_rails/assets', 

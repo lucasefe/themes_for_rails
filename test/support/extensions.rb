@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'active_support/test_case'
 
 class ActiveSupport::TestCase

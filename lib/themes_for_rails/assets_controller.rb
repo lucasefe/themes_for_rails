@@ -1,10 +1,8 @@
+# encoding: utf-8
 require "action_controller/metal"
 
 module ThemesForRails
   class AssetsController < ActionController::Base
-
-    include ThemesForRails::CommonMethods
-    include ThemesForRails::UrlHelpers
 
     def stylesheets
       handle_asset(params[:asset], params[:theme], "stylesheets")

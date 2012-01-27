@@ -1,8 +1,12 @@
+# encoding: utf-8
 module ThemesForRails
-  module MailerMethods
+
+  module ActionMailer
+
     extend ActiveSupport::Concern
 
     included do
+      include ThemesForRails::ActionController
       alias_method_chain :mail, :theme
     end
 
@@ -12,7 +16,7 @@ module ThemesForRails
 
       mail_without_theme(headers, &block)
     end
+    
   end
-end
 
-ActiveSupport.on_load(:action_mailer) { include ThemesForRails::MailerMethods }
+end

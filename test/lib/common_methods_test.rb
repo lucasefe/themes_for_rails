@@ -1,3 +1,4 @@
+# encoding: utf-8
 require File.expand_path("test/test_helper.rb")
 
 class ThemesForRailsTest < Test::Unit::TestCase

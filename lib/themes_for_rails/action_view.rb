@@ -1,11 +1,14 @@
+# encoding: utf-8
 module ThemesForRails
-  module ViewHelpers
+  
+  module ActionView
 
     extend ActiveSupport::Concern
 
     included do
       include ThemesForRails::CommonMethods
     end
+
     def current_theme_stylesheet_path(asset)
       base_theme_stylesheet_path(:theme => self.theme_name, :asset => "#{asset}.css")
     end
@@ -46,4 +49,3 @@ module ThemesForRails
   end
 end
 
-ActiveSupport.on_load(:action_view) { include ThemesForRails::ViewHelpers }

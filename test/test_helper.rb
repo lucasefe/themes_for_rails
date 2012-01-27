@@ -1,3 +1,4 @@
+# encoding: utf-8
 ENV["RAILS_ENV"] = "test"
 
 $:.unshift File.dirname(__FILE__)

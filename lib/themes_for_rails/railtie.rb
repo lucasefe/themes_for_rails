@@ -1,7 +1,7 @@
-# ActiveSupport.on_load(:action_view) { include Devise::Controllers::UrlHelpers }
-
+# encoding: utf-8
 module ThemesForRails
   class Railtie < ::Rails::Railtie
+
     config.themes_for_rails = ActiveSupport::OrderedOptions.new
 
     config.to_prepare do
@@ -12,6 +12,17 @@ module ThemesForRails
       # Adding theme stylesheets path to sass, automatically. 
       ThemesForRails.add_themes_path_to_sass if ThemesForRails.config.use_sass?
       
+      ActiveSupport.on_load(:action_view) do
+        include ThemesForRails::ActionView
+      end
+
+      ActiveSupport.on_load(:action_controller) do
+        include ThemesForRails::ActionController
+      end
+
+      ActiveSupport.on_load(:action_mailer) do
+        include ThemesForRails::ActionMailer
+      end
     end
     
     rake_tasks do
