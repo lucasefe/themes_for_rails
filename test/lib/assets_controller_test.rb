@@ -25,6 +25,11 @@ module ThemesForRails
       assert_response :success
       assert_equal @response.content_type, 'text/javascript'
     end
+    should "respond with the right javascript file when requested (including multiple dot on the filename)" do
+      get 'javascripts', { :theme => 'default', :asset => 'app.min.js'}
+      assert_response :success
+      assert_equal @response.content_type, 'text/javascript'
+    end
     should "not be success when the javascript file is not found" do
       get 'javascripts', { :theme => 'default', :asset => 'oldapp.js'}
       assert_response :missing
