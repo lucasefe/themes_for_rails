@@ -1,3 +1,4 @@
+# encoding: utf-8
 require File.expand_path("test/test_helper.rb")
 
 class MyController < ActionController::Base
@@ -95,7 +96,7 @@ module ThemesForRails
         should "have a proper view path" do
           @controller.theme 'default'
           view_path = @controller.view_paths.first
-          theme_path = File.join(File.expand_path(File.dirname(__FILE__)), "dummy_app", "themes", "default", "views")
+          theme_path = File.expand_path(File.join("test", "dummy_app", "themes", "default", "views"))
           assert_equal view_path.to_s, theme_path
         end
       end
