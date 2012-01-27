@@ -27,6 +27,14 @@ module ThemesForRails
       assert_equal "/themes/sometheme/images/logo.png", theme_image_path('logo.png', "sometheme")
       
     end
+
+    should "provide path helpers for a given theme name with dots" do
+      
+      assert_equal "/themes/some.theme/stylesheets/style.css", theme_stylesheet_path('style', "some.theme")
+      assert_equal "/themes/some.theme/javascripts/app.js", theme_javascript_path('app', "some.theme")
+      assert_equal "/themes/some.theme/images/logo.png", theme_image_path('logo.png', "some.theme")
+      
+    end
     
     should 'delegate to stylesheet_link_tag' do
       assert_match /media=.screen/, theme_stylesheet_link_tag('cuac.css')
