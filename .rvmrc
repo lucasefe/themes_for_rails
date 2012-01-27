@@ -1,1 +1,1 @@
-rvm use 1.9.2@themes_for_rails --create
+rvm use 1.9.3@themes_for_rails --create
