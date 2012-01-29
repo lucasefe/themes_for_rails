@@ -5,20 +5,21 @@ module ThemesForRails
   class AssetsController < ActionController::Base
 
     def stylesheets
-      handle_asset(params[:asset], params[:theme], "stylesheets")
+      handle_asset("stylesheets")
     end
 
     def javascripts
-      handle_asset(params[:asset], params[:theme], "javascripts")
+      handle_asset("javascripts")
     end
 
     def images
-      handle_asset(params[:asset], params[:theme], "images")
+      handle_asset("images")
     end
 
   private
     
-    def handle_asset(asset, theme, prefix)
+    def handle_asset(prefix)
+      asset, theme = params[:asset], params[:theme]
       find_themed_asset(asset, theme, prefix) do |path, mime_type|
         send_file path, :type => mime_type, :disposition => "inline"
       end
