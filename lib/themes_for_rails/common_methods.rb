@@ -3,7 +3,7 @@ module ThemesForRails
   module CommonMethods
 
     def view_path_for(theme)
-      File.join(theme_path_for(theme), "views")
+      theme_path_for(theme, ThemesForRails.config.base_dir, ThemesForRails.config.views_dir)
     end
 
     def theme_name
