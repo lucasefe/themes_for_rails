@@ -11,19 +11,30 @@ module ThemesForRails
       yield if block_given?
     end
     
-    # Rails Root: /vagrant/web
     def base_dir
       @base_dir ||= Rails.root
     end
     
-    # relative assets dir for asset pipeline: /vagrant/web/app/ {assets} /themes/ {theme}
+    # relative assets dir for view overloading support
+    # used for theme_path_for method to get theme path and add to view paths
+    #
+    # If you are using the Rails Asset Pipeline, this should be changed to the 
+    # path of your assets in your app. For example, if you store your themes
+    # under /app/assets/themes - {Rails.root}/app/assets/themes
+    # you would need to set this to 'app/assets/themes' in your initializer config
     def assets_dir
-      @assets_dir ||= "assets"
+      @assets_dir ||= "themes"
     end
     
-    # Themes Dir (relative path to themes from base_dir): app/assets/themes
+    # This is the base themes dir that is used for mapping URL paths.
+    # 
+    # If you are using the Rails Asset Pipeline, this should be changed to the
+    # prefix dir of your assets path. For example, if you store your themes
+    # under /app/assets/themes - {Rails.root}/app/assets/themes
+    # you would need to set this value to 'assets' to match up with the Sprockets
+    # path resolution process.
     def themes_dir
-      @themes_dir ||= "app/assets/themes"
+      @themes_dir ||= "themes"
     end
     
     # Full path to themes
