@@ -57,7 +57,7 @@ $app_root
             layouts/         <- layout .rhtml or .liquid templates
 </pre>
 
-Second, create an initializer for themes in your {Rails.root}/config/initializers directory and set the themes_dir and assets_dir settings appropriately.
+Create an initializer for themes in your {Rails.root}/config/initializers directory and set the themes_dir and assets_dir settings appropriately.
 
 <pre>
 # Rails.root/config/initializers/themes_for_rails.rb (for instance)
@@ -82,6 +82,42 @@ In your theme stylesheets directory, you can create an application.css file usin
 As you can see, if you do not preface with the theme_name/stylesheets it will reference the root /app/assets/stylesheets path for global stylesheets (great for mixins and reset styles)
 
 Currently, one unresolved issue with this setup is that you must pass the theme_name/images path into your sass image-url helper methods. For example, if you are including an image in the 'default' theme: <pre>image-url('default/images/background.png')</pre>
+
+If you do not want to have your views inside the asset pipeline dir, you can alternatively configure your application like this:
+
+<pre>
+$app_root
+  app/
+    assets/
+      images/      <-- default asset pipeline folder
+      javascripts/ <-- default asset pipeline folder
+      stylesheets/ <-- default asset pipeline folder
+      themes/      <-- your themes root
+        [theme_name]
+          images/
+          stylesheets/
+          javascripts/
+    views/
+      themes/       <-- note themes folder lives under views in this scenario
+        [theme_name]  
+          layouts/         <- layout .rhtml or .liquid templates
+</pre>
+
+and in your initializer, you will need to set the views_dir config setting like so:
+
+<pre>
+# Rails.root/config/initializers/themes_for_rails.rb (for instance)
+ThemesForRails.config do |config|
+  #
+  # If you have placed your themes like the example path above within the asset pipeline:
+  config.themes_dir = 'assets'
+  config.assets_dir = 'app/assets/themes'
+  config.views_dir  = 'app/views/themes'
+  # ...
+end
+</pre>
+
+After that, the rest of the config for asset pipeline styles and whatnot mentioned above will work.
 
 h3. And then?
 
