@@ -5,39 +5,40 @@ module ThemesForRails
   class AssetsController < ActionController::Base
 
     def stylesheets
-      handle_asset(params[:asset], params[:theme], "stylesheets")
+      handle_asset("stylesheets")
     end
 
     def javascripts
-      handle_asset(params[:asset], params[:theme], "javascripts")
+      handle_asset("javascripts")
     end
 
     def images
-      handle_asset(params[:asset], params[:theme], "images")
+      handle_asset("images")
     end
 
   private
     
-    def handle_asset(asset, theme, prefix)
+    def handle_asset(prefix)
+      asset, theme = params[:asset], params[:theme]
       find_themed_asset(asset, theme, prefix) do |path, mime_type|
         send_file path, :type => mime_type, :disposition => "inline"
       end
     end
     
-    def find_themed_asset(asset_name, asset_theme, asset_prefix, &block)
-      path = asset_path(asset_name, asset_theme, asset_prefix)
+    def find_themed_asset(asset_name, asset_theme, asset_type, &block)
+      path = asset_path(asset_name, asset_theme, asset_type)
       if File.exists?(path)
         yield path, mime_type_for(request)
       elsif File.extname(path).blank?
         asset_name = "#{asset_name}.#{extension_from(request.path_info)}"
-        return find_themed_asset(asset_name, asset_theme, asset_prefix, &block) 
+        return find_themed_asset(asset_name, asset_theme, asset_type, &block) 
       else
         render_not_found
       end
     end
 
-    def asset_path(asset_name, asset_theme, asset_prefix)
-      File.join(theme_path_for(asset_theme), asset_prefix, asset_name)
+    def asset_path(asset_name, asset_theme, asset_type)
+      File.join(theme_path_for(asset_theme), asset_type, asset_name)
     end
 
     def render_not_found
