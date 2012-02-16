@@ -3,6 +3,8 @@ h1. Theme For Rails (3 and hopefully later)
 h2. Features list / Wish list
 
 * Support for adding themes which includes stylesheets, javascripts, views and layouts. 
+* add a theme-image-url sass helper method for asset pipeline based themes
+* update the generators and rake tasks to support asset pipeline based themes
 
 <pre>
 $app_root
@@ -32,6 +34,54 @@ MySuperDuperApp::Application.routes.draw do
   # ...
 end
 </pre>
+
+h3. Additional Instructions for using the Rails Asset Pipeline
+
+In order to use themes_for_rails with the asset pipeline, you will need to configure a few settings and place your themes in the asset pipeline directory.
+
+First, move your assets into the asset pipeline. For example:
+
+<pre>
+$app_root
+  app/
+    assets/
+      images/      <-- default asset pipeline folder
+      javascripts/ <-- default asset pipeline folder
+      stylesheets/ <-- default asset pipeline folder
+      themes/      <-- your themes root
+        [theme_name]
+          images/
+          stylesheets/
+          javascripts/
+          views/           <- you can override application views
+            layouts/         <- layout .rhtml or .liquid templates
+</pre>
+
+Second, create an initializer for themes in your {Rails.root}/config/initializers directory and set the themes_dir and assets_dir settings appropriately.
+
+<pre>
+# Rails.root/config/initializers/themes_for_rails.rb (for instance)
+ThemesForRails.config do |config|
+  #
+  # If you have placed your themes like the example path above within the asset pipeline:
+  config.themes_dir = 'assets'
+  config.assets_dir = 'app/assets/themes'
+  # ...
+end
+</pre>
+
+In your theme stylesheets directory, you can create an application.css file using the Sprockets require methods:
+
+<pre>
+/*
+ *= require global_stylesheet_name
+ *= require theme_name/stylesheets/stylesheet_name
+ */
+</pre>
+
+As you can see, if you do not preface with the theme_name/stylesheets it will reference the root /app/assets/stylesheets path for global stylesheets (great for mixins and reset styles)
+
+Currently, one unresolved issue with this setup is that you must pass the theme_name/images path into your sass image-url helper methods. For example, if you are including an image in the 'default' theme: <pre>image-url('default/images/background.png')</pre>
 
 h3. And then?
 
