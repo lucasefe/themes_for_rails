@@ -15,6 +15,7 @@ h2. Documentation
 
 * "Rdoc":http://rubydoc.info/github/lucasefe/themes_for_rails/master/frames
 * "Wiki":https://github.com/lucasefe/themes_for_rails/wiki
+* "Old Readme File":https://github.com/lucasefe/themes_for_rails/blob/master/doc/README.textile
 
 h2. Ideas / Inspiration
 
