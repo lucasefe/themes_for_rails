@@ -2,9 +2,7 @@
 module ThemesForRails
   module CommonMethods
 
-    def view_path_for(theme)
-      theme_path_for(theme, ThemesForRails.config.base_dir, ThemesForRails.config.views_dir)
-    end
+    include ThemesForRails::Interpolation
 
     def theme_name
       @cached_theme_name ||= begin
@@ -42,19 +40,27 @@ module ThemesForRails
     
     # will add the view path for a given theme name
     def add_theme_view_path_for(name)
-      self.view_paths.insert 0, ::ActionView::FileSystemResolver.new(view_path_for(name))
+      self.view_paths.insert 0, ::ActionView::FileSystemResolver.new(theme_view_path_for(name))
     end
 
     def public_theme_path
-      theme_path("/")
+      theme_view_path("/")
     end
 
-    def theme_path(base = ThemesForRails.config.base_dir)
-      theme_path_for(theme_name, base)
+    def theme_asset_path
+      theme_asset_path_for(theme_name)
     end
 
-    def theme_path_for(name, base = ThemesForRails.config.base_dir, asset_dir = ThemesForRails.config.assets_dir)
-      File.join(base, asset_dir, name)
+    def theme_view_path
+      theme_view_path_for(theme_name)
+    end
+
+    def theme_view_path_for(theme_name)
+      interpolate(ThemesForRails.config.views_dir, theme_name)
+    end
+
+    def theme_asset_path_for(theme_name)
+      interpolate(ThemesForRails.config.assets_dir, theme_name)
     end
   end
 end

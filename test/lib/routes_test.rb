@@ -1,5 +1,5 @@
 # encoding: utf-8
-require "test_helper"
+require File.expand_path("test/test_helper.rb")
 
 module ThemesForRails
   class RoutingTest < ::ActionController::TestCase  

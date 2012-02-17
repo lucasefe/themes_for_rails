@@ -1,5 +1,5 @@
 # encoding: utf-8
-require 'test_helper'
+require File.expand_path("test/test_helper.rb")
 
 class ThemesForRailsTest < Test::Unit::TestCase
   
@@ -13,7 +13,7 @@ class ThemesForRailsTest < Test::Unit::TestCase
   
   should 'change the directory to views' do
     ThemesForRails.config do |config|
-      config.themes_dir = 'another_themes'
+      config.themes_dir = ':root/another_themes'
     end
     
     assert_equal ['another_default'], ThemesForRails.available_theme_names

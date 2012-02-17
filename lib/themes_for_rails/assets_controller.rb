@@ -38,11 +38,11 @@ module ThemesForRails
     end
 
     def asset_path(asset_name, asset_theme, asset_type)
-      File.join(theme_path_for(asset_theme), asset_type, asset_name)
+      File.join(theme_asset_path_for(asset_theme), asset_type, asset_name)
     end
 
     def render_not_found
-      render :text => 'not found', :status => 404
+      render :text => 'Not found', :status => 404
     end
       
     def mime_type_for(request)

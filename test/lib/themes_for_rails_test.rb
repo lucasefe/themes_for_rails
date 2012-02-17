@@ -1,5 +1,5 @@
 # encoding: utf-8
-require "test_helper"
+require File.expand_path("test/test_helper.rb")
 
 class ThemesForRailsTest < Test::Unit::TestCase
   
@@ -8,7 +8,7 @@ class ThemesForRailsTest < Test::Unit::TestCase
   end
   
   should 'use config for each_theme_dir' do
-    ThemesForRails.config.themes_dir = 'another_themes'
+    ThemesForRails.config.themes_dir = ':root/another_themes'
     assert_equal %w(another_default), ThemesForRails.each_theme_dir.map {|theme| File.basename(theme) }
   end
   

@@ -124,8 +124,8 @@ module ThemesForRails
         should "have a proper view path" do
           @controller.theme 'default'
           view_path = @controller.view_paths.first
-          theme_path = File.expand_path(File.join("test", "dummy_app", "themes", "default", "views"))
-          assert_equal view_path.to_s, theme_path
+          theme_view_path = File.expand_path(File.join("test", "dummy_app", "themes", "default", "views"))
+          assert_equal view_path.to_s, theme_view_path
         end
 
       end
