@@ -43,9 +43,25 @@ module ThemesForRails
       self.view_paths.insert 0, ::ActionView::FileSystemResolver.new(theme_view_path_for(name))
     end
 
-    def digest_for(asset)
+    def digest_for_image(asset, theme_context)
       if Rails.application.config.respond_to?('assets') && Rails.application.config.assets.digests
-        Rails.application.config.assets.digests[asset]
+        Rails.application.config.assets.digests["#{theme_context}/images/#{asset}"]
+      else
+        asset
+      end
+    end
+
+    def digest_for_javascript(asset, theme_context)
+      if Rails.application.config.respond_to?('assets') && Rails.application.config.assets.digests
+        Rails.application.config.assets.digests["#{theme_context}/javascripts/#{asset}"]
+      else
+        asset
+      end
+    end
+
+    def digest_for_stylesheet(asset, theme_context)
+      if Rails.application.config.respond_to?('assets') && Rails.application.config.assets.digests
+        Rails.application.config.assets.digests["#{theme_context}/stylesheets/#{asset}"]
       else
         asset
       end

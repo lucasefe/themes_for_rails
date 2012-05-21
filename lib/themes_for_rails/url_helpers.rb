@@ -11,16 +11,16 @@ module ThemesForRails
     end
 
     def current_theme_stylesheet_path(asset)
-      base_theme_stylesheet_path(:theme => self.theme_name, :asset => digest_for("#{asset}.css"))
+      base_theme_stylesheet_path(:theme => self.theme_name, :asset => digest_for_stylesheet("#{asset}.css", self.theme_name))
     end
 
     def current_theme_javascript_path(asset)
-      base_theme_javascript_path(:theme => self.theme_name, :asset => digest_for("#{asset}.js"))
+      base_theme_javascript_path(:theme => self.theme_name, :asset => digest_for_javascript("#{asset}.js", self.theme_name))
     end
 
     def current_theme_image_path(asset)
       image, extension = name_ext(asset)
-      base_theme_image_path(:theme => self.theme_name, :asset => digest_for("#{image}.#{extension}"))
+      base_theme_image_path(:theme => self.theme_name, :asset => digest_for_image("#{image}.#{extension}", self.theme_name))
     end
 
   end
