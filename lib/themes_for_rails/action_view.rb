@@ -44,16 +44,19 @@ module ThemesForRails
     def theme_javascript_include_tag(*files)
       options = files.extract_options!
       options.merge!({ :type => "text/javascript" })
-      files.collect! {|file| theme_javascript_path(file) }
-      javascript_include_tag(*files, options)
+      files_with_options = files.collect {|file| theme_javascript_path(file) }
+      files_with_options += [options]
+
+      javascript_include_tag(*files_with_options)
     end
 
     def theme_stylesheet_link_tag(*files)
       options = files.extract_options!
       options.merge!({ :type => "text/css" })
-      files.collect! {|file| theme_stylesheet_path(file) }
-      stylesheet_link_tag(*files, options)
+      files_with_options = files.collect {|file| theme_stylesheet_path(file) }
+      files_with_options += [options]
+
+      stylesheet_link_tag(*files_with_options)
     end
   end
 end
-
