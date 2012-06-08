@@ -21,6 +21,8 @@ module ThemesForRails
     def handle_asset(prefix)
       asset, theme = params[:asset], params[:theme]
       find_themed_asset(asset, theme, prefix) do |path, mime_type|
+        response.headers['ETag'] = %("#{Digest::MD5.hexdigest(ActiveSupport::Cache.expand_cache_key(File.mtime(path).to_s + path))}")
+        response.headers['Cache-Control'] = "public, max-age=2592000"
         send_file path, :type => mime_type, :disposition => "inline"
       end
     end
