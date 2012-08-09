@@ -39,6 +39,17 @@ h3. Additional Instructions for using the Rails Asset Pipeline
 
 In order to use themes_for_rails with the asset pipeline, you will need to configure a few settings and place your themes in the asset pipeline directory.
 
+You will need to enable asset digests in your rails app. This is normally enabled in production mode but you can add it to your development environment to
+test locally.
+
+<pre>
+# config/environments/development.rb
+
+config.assets.digest = true
+
+</pre>
+
+
 First, move your assets into the asset pipeline. For example:
 
 <pre>
@@ -50,9 +61,11 @@ $app_root
       stylesheets/ <-- default asset pipeline folder
       themes/      <-- your themes root
         [theme_name]
-          images/
-          stylesheets/
-          javascripts/
+          assets/          <-- this is your theme_assets_dir
+            [theme_name]   <-- this ensures that the assets are namespaced and don't clobber eachother.
+              images/
+              stylesheets/
+              javascripts/
           views/           <- you can override application views
             layouts/         <- layout .rhtml or .liquid templates
 </pre>
@@ -64,8 +77,7 @@ Create an initializer for themes in your {Rails.root}/config/initializers direct
 ThemesForRails.config do |config|
   #
   # If you have placed your themes like the example path above within the asset pipeline:
-  config.themes_dir = 'assets'
-  config.assets_dir = 'app/assets/themes'
+  config.assets_dir = 'app/assets/themes/:name/assets'
   # ...
 end
 </pre>
@@ -94,9 +106,11 @@ $app_root
       stylesheets/ <-- default asset pipeline folder
       themes/      <-- your themes root
         [theme_name]
-          images/
-          stylesheets/
-          javascripts/
+          assets/          <-- this is your theme_assets_dir
+            [theme_name]   <-- this ensures that the assets are namespaced and don't clobber eachother.
+              images/
+              stylesheets/
+              javascripts/
     views/
       themes/       <-- note themes folder lives under views in this scenario
         [theme_name]  
@@ -111,7 +125,7 @@ ThemesForRails.config do |config|
   #
   # If you have placed your themes like the example path above within the asset pipeline:
   config.themes_dir = 'assets'
-  config.assets_dir = 'app/assets/themes'
+  config.assets_dir = 'app/assets/themes/:name/assets'
   config.views_dir  = 'app/views/themes'
   # ...
 end
@@ -207,15 +221,15 @@ h3. Url Helpers
 In your views you should be able to access your assets like this (given the theme 'default' is set):
 
 <pre>
-current_theme_image_path('logo.png')   # => /themes/default/images/logo.png
-current_theme_stylesheet_path('style') # => /themes/default/stylesheets/logo.css
-current_theme_javascript_path('app')   # => /themes/default/stylesheets/app.js
+current_theme_image_path('logo.png')   # => /assets/default/images/logo.png
+current_theme_stylesheet_path('style') # => /assets/default/stylesheets/logo.css
+current_theme_javascript_path('app')   # => /assets/default/stylesheets/app.js
 </pre>
 
 Or a given theme:
 
 <pre>
-current_theme_image_path('logo.png', 'purple')   # => /themes/purple/images/logo.png
+current_theme_image_path('logo.png', 'purple')   # => /assets/purple/images/logo.png
 </pre>
 
 In your application views, there are theme specific helper tags 
