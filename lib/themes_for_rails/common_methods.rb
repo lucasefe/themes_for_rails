@@ -44,24 +44,24 @@ module ThemesForRails
     end
 
     def digest_for_image(asset, theme_context)
-      if Rails.application.config.respond_to?('assets') && Rails.application.config.assets.digests
-        File.basename(Rails.application.config.assets.digests["#{theme_context}/images/#{asset}"])
+      if ThemesForRails.config.asset_digests_enabled?
+        Rails.application.config.assets.digests["#{theme_context}/images/#{asset}"] || asset
       else
         asset
       end
     end
 
     def digest_for_javascript(asset, theme_context)
-      if Rails.application.config.respond_to?('assets') && Rails.application.config.assets.digests
-        File.basename(Rails.application.config.assets.digests["#{theme_context}/javascripts/#{asset}"])
+      if ThemesForRails.config.asset_digests_enabled?
+        Rails.application.config.assets.digests["#{theme_context}/javascripts/#{asset}"] || asset
       else
         asset
       end
     end
 
     def digest_for_stylesheet(asset, theme_context)
-      if Rails.application.config.respond_to?('assets') && Rails.application.config.assets.digests
-        File.basename(Rails.application.config.assets.digests["#{theme_context}/stylesheets/#{asset}"])
+      if ThemesForRails.config.asset_digests_enabled?
+        Rails.application.config.assets.digests["#{theme_context}/stylesheets/#{asset}"] || asset
       else
         asset
       end

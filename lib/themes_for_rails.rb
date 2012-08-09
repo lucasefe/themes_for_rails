@@ -35,7 +35,22 @@ module ThemesForRails
         raise "Sass is not available. What are you trying to do?"
       end
     end
-    
+
+    def check_asset_pipeline
+      config.asset_digests_enabled ||= Rails.application.config.respond_to?(:assets) && Rails.application.config.assets.digest == true
+    end
+
+    def add_themes_assets_to_asset_pipeline
+      Rails.logger.info "Start adding themes to assets [#{ThemesForRails.config.asset_digests_enabled?}]"
+      if ThemesForRails.config.asset_digests_enabled?
+        available_theme_names.each do |theme_name|
+          theme_asset_path = ThemesForRails.config.assets_dir.gsub(":root", ThemesForRails.config.base_dir).gsub(":name", theme_name.to_s)
+          Rails.logger.info "== Adding theme [#{theme_name}] asset dir [#{theme_asset_path}] to asset pipeline"
+          Rails.application.config.assets.paths.prepend(theme_asset_path)
+        end
+      end
+    end
+
     def already_configured_in_sass?(sass_dir)
       Sass::Plugin.template_location_array.map(&:first).include?(sass_dir)
     end
