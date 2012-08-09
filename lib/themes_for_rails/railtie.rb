@@ -20,6 +20,10 @@ module ThemesForRails
 
       ActiveSupport.on_load(:action_view) do
         include ThemesForRails::ActionView
+        if ThemesForRails.config.asset_digests_enabled?
+          require 'themes_for_rails/digested_action_view'
+          include ThemesForRails::DigestedActionView
+        end
       end
 
       ActiveSupport.on_load(:action_controller) do
