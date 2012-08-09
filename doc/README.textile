@@ -49,6 +49,9 @@ config.assets.digest = true
 
 </pre>
 
+h4. PLEASE ADD themes_for_rails TO THE ASSETS GROUP IN YOUR GEMFILE!
+In order to automatically add the themes to your asset pipeline you need to add the themes_for_rails gem to the assets group in your Gemfile.
+
 
 First, move your assets into the asset pipeline. For example:
 
