@@ -2,7 +2,7 @@
 module ThemesForRails
   class Config
 
-    attr_writer :base_dir, :themes_dir, :assets_dir, :views_dir, :themes_routes_dir
+    attr_writer :base_dir, :themes_dir, :assets_dir, :views_dir, :themes_routes_dir, :assets_cache_control
     attr_accessor :use_sass, :default_theme
     
     include Interpolation
@@ -39,6 +39,10 @@ module ThemesForRails
       @themes_dir ||= ":root/themes"
     end
     
+    def assets_cache_control
+      @assets_cache_control ||= "public, max-age=#{1.hours}"
+    end
+    
     # Full path to themes
     def themes_path
       interpolate(themes_dir)
@@ -57,10 +61,11 @@ module ThemesForRails
     end
 
     def clear
-      @base_dir   = nil
-      @themes_dir = nil
-      @assets_dir = nil
-      @views_dir  = nil
+      @base_dir             = nil
+      @themes_dir           = nil
+      @assets_dir           = nil
+      @views_dir            = nil
+      @assets_cache_control = nil
     end
 
     def use_sass?
