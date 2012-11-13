@@ -45,7 +45,7 @@ module ThemesForRails
 
     def digest_for_image(asset, theme_context)
       if ThemesForRails.config.asset_digests_enabled?
-        Rails.application.config.assets.digests["#{theme_context}/images/#{asset}"] || asset
+        asset_paths.digest_for("#{theme_context}/images/#{asset}") || asset
       else
         asset
       end
@@ -53,7 +53,7 @@ module ThemesForRails
 
     def digest_for_javascript(asset, theme_context)
       if ThemesForRails.config.asset_digests_enabled?
-        Rails.application.config.assets.digests["#{theme_context}/javascripts/#{asset}"] || asset
+        asset_paths.digest_for("#{theme_context}/javascripts/#{asset}") || asset
       else
         asset
       end
@@ -61,7 +61,8 @@ module ThemesForRails
 
     def digest_for_stylesheet(asset, theme_context)
       if ThemesForRails.config.asset_digests_enabled?
-        Rails.application.config.assets.digests["#{theme_context}/stylesheets/#{asset}"] || asset
+        #Rails.application.config.assets.digests["#{theme_context}/stylesheets/#{asset}"] || asset
+        asset_paths.digest_for("#{theme_context}/stylesheets/#{asset}") || asset
       else
         asset
       end
