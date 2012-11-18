@@ -46,8 +46,8 @@ module ThemesForRails
         available_theme_names.each do |theme_name|
           theme_asset_path = ThemesForRails.config.assets_dir.gsub(":root", ThemesForRails.config.base_dir).gsub(":name", theme_name.to_s)
           Rails.logger.info "== Adding theme [#{theme_name}] asset dir [#{theme_asset_path}] to asset pipeline"
-          Rails.application.config.assets.paths.prepend(theme_asset_path)
-        end
+          Rails.application.config.assets.paths.prepend(theme_asset_path) unless Rails.application.config.assets.paths.include?(theme_asset_path)
+        end unless ThemesForRails.config.base_dir =~ %r!/app/assets/!
       end
     end
 
