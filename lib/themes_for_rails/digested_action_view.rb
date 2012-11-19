@@ -31,8 +31,7 @@ module ThemesForRails
     end
 
     def theme_image_path(asset, new_theme_name = self.theme_name)
-      image, extension = name_ext(asset)
-      digest_for_image("#{image}.#{extension}", new_theme_name)
+      path_to_image(digest_for_image(asset, new_theme_name))
     end
 
     def theme_image_tag(source, options = {})
