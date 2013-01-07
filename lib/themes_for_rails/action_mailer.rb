@@ -11,7 +11,7 @@ module ThemesForRails
     end
 
     def mail_with_theme(headers = {}, &block)
-      theme_opts = headers[:theme] || self.class.default[:theme]
+      theme_opts = headers[:theme] || headers['X-theme'] || self.class.default[:theme]
       theme(theme_opts) if theme_opts
 
       mail_without_theme(headers, &block)
