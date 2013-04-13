@@ -2,7 +2,7 @@
 module ThemesForRails
   class Config
 
-    attr_writer :base_dir, :themes_dir, :assets_dir, :views_dir, :themes_routes_dir
+    attr_writer :base_dir, :themes_dir, :assets_dir, :views_dir, :themes_routes_dir, :css_cache_dir, :sass_dir
     attr_accessor :use_sass, :default_theme
     
     include Interpolation
@@ -37,6 +37,16 @@ module ThemesForRails
     
     def themes_dir
       @themes_dir ||= ":root/themes"
+    end
+    
+    # Default dir where css file are store on Sass generation
+    def css_cache_dir
+      @css_cache_dir ||= ":root/themes/:name/stylesheets"
+    end
+    
+    # Default sass dir path
+    def sass_dir
+      @sass_dir ||= ":root/themes/:name/stylesheets/sass"
     end
     
     # Full path to themes
