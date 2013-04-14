@@ -4,6 +4,8 @@ module ThemesForRails
   class << self
 
     def config
+      # Make sure that sass/plugin is loaded because Sass load only plugin if Merb::Plugin is loaded
+      require 'sass/plugin' if defined?(Sass::Engine) 
       @config ||= ThemesForRails::Config.new
       yield(@config) if block_given?
       @config
@@ -22,9 +24,10 @@ module ThemesForRails
       if ThemesForRails.config.sass_is_available?
         each_theme_dir do |dir|
           if File.directory?(dir) # Need to get rid of the '.' and '..'
-
-            sass_dir = "#{dir}/stylesheets/sass"
-            css_dir = "#{dir}/stylesheets"
+            asset_theme = File.basename(dir)
+            
+            sass_dir = ThemesForRails::Interpolation.interpolate(config.sass_dir, asset_theme)
+            css_dir = ThemesForRails::Interpolation.interpolate(config.css_cache_dir, asset_theme)
 
             unless already_configured_in_sass?(sass_dir)
               Sass::Plugin.add_template_location sass_dir, css_dir 
