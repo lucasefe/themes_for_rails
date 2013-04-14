@@ -4,6 +4,8 @@ module ThemesForRails
   class << self
 
     def config
+      # Make sure that sass/plugin is loaded because Sass load only plugin if Merb::Plugin is loaded
+      require 'sass/plugin' if defined?(Sass::Engine) 
       @config ||= ThemesForRails::Config.new
       yield(@config) if block_given?
       @config
@@ -45,8 +47,6 @@ module ThemesForRails
 end
 
 require 'active_support/dependencies'
-# Make sure that sass/plugin is loaded because Sass load only plugin if Merb::Plugin is loaded
-require 'sass/plugin' if defined?(Sass::Engine) 
 require 'themes_for_rails/interpolation'
 require 'themes_for_rails/config'
 require 'themes_for_rails/common_methods'
