@@ -19,4 +19,22 @@ namespace :themes do
   end
   desc "Updates the cached (public) theme folders"
   task :update_cache => [:remove_cache, :create_cache]
+
+  desc "Add theme view paths to ActionView PathSet"
+  task :add_theme_to_view_paths => :environment do
+    raise 'you must provide THEME for theme support to work' unless theme = ENV['THEME']
+    puts "adding theme [#{theme}] to view path"
+    require 'themes_for_rails/common_methods'
+    include ThemesForRails::CommonMethods
+
+    theme_view_path=theme_view_path_for(theme)
+    ActionController::Base.view_paths.paths.prepend(theme_view_path) if theme
+  end
+end
+
+namespace :cache_digests do
+  puts "patching cache_digests with themes_for_rails support"
+  # Add themes support to cache_digest gem rake tasks
+  task :nested_dependencies => ['themes:add_theme_to_view_paths']
+  task :dependencies => ['themes:add_theme_to_view_paths']
 end
