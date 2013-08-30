@@ -9,11 +9,21 @@ module ThemesForRails
         ThemesForRails.config.send "#{key}=".to_sym, value
       end
       
-      # Adding theme stylesheets path to sass, automatically. 
+      # Adding theme stylesheets path to sass, automatically.
       ThemesForRails.add_themes_path_to_sass if ThemesForRails.config.use_sass?
-      
+
+      # Check if asset pipeline enabled
+      ThemesForRails.check_asset_pipeline
+
+      # Adding theme assets to the asset pipeline, automatically.
+      ThemesForRails.add_themes_assets_to_asset_pipeline if ThemesForRails.config.asset_digests_enabled?
+
       ActiveSupport.on_load(:action_view) do
         include ThemesForRails::ActionView
+        if ThemesForRails.config.asset_digests_enabled?
+          require 'themes_for_rails/digested_action_view'
+          include ThemesForRails::DigestedActionView
+        end
       end
 
       ActiveSupport.on_load(:action_controller) do

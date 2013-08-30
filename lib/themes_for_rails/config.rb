@@ -3,13 +3,14 @@ module ThemesForRails
   class Config
 
     attr_writer :base_dir, :themes_dir, :assets_dir, :views_dir, :themes_routes_dir
-    attr_accessor :use_sass, :default_theme
+    attr_accessor :use_sass, :default_theme, :asset_digests_enabled
     
     include Interpolation
 
     def initialize(&block)
       @use_sass = true
       @default_theme = 'default'
+      @asset_digests_enabled = nil
       yield if block_given?
     end
     
@@ -69,6 +70,10 @@ module ThemesForRails
 
     def sass_is_available?
       !!defined?Sass::Plugin
+    end
+
+    def asset_digests_enabled?
+      @asset_digests_enabled
     end
   end  
 end
