@@ -2,9 +2,9 @@
 require File.expand_path("test/test_helper.rb")
 
 module ThemesForRails
-  class AssetsControllerTest < ::ActionController::TestCase  
+  class AssetsControllerTest < ::ActionController::TestCase
     tests ThemesForRails::AssetsController
-    
+
     should "respond to stylesheets" do
       assert @controller.respond_to?(:stylesheets)
     end
@@ -14,12 +14,19 @@ module ThemesForRails
       assert_response :success
       assert_equal @response.content_type, 'text/css'
     end
-    
+
     should "not be success when the stylesheet file is not found" do
       get 'stylesheets', { :theme => 'default', :asset => 'oldstyle.css'}
       assert_response :missing
     end
-    
+
+    should "not raise an exception with a missing extension" do
+      assert_nothing_raised do
+        get 'stylesheets', { :theme => 'default', :asset => 'style'}
+      end
+      assert_response :missing
+    end
+
     # javascripts
     should "respond to javascripts" do
       assert @controller.respond_to?(:javascripts)
@@ -41,7 +48,7 @@ module ThemesForRails
       get 'javascripts', { :theme => 'default', :asset => 'oldapp.js'}
       assert_response :missing
     end
-    
+
     # images
     should "respond to images" do
       assert @controller.respond_to?(:images)
@@ -52,18 +59,18 @@ module ThemesForRails
       assert_response :success
       assert_equal  'image/png', @response.content_type
     end
-    
+
     should "not be success when the image file is not found" do
       get 'images', { :theme => 'default', :asset => 'i_am_not_here.jpg'}
       assert_response :missing
     end
-    
+
     should "respond with a nested asset" do
       get 'images', { :theme => 'default', :asset => 'nested/logo.png'}
       assert_response :success
       assert_equal 'image/png', @response.content_type
     end
-    
+
     should "respond with properly even when requesting an image inside the stylesheets folder" do
       get 'stylesheets', { :theme => 'default', :asset => 'images/logo.png'}
       assert_response :success
