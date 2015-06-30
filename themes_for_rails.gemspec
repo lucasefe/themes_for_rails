@@ -21,5 +21,4 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency "test-unit"
   gem.add_development_dependency "contest"
   gem.add_development_dependency "mocha"
-  gem.add_development_dependency('rails', ["= 3.0.11"])
 end
