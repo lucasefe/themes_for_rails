@@ -15,7 +15,7 @@ module ThemesForRails
     module ClassMethods
 
       def theme(name, options = {})
-        before_filter(options) do |controller|
+        before_action(options) do |controller|
           controller.set_theme(name)
         end
       end
